@@ -1,0 +1,37 @@
+
+Автор Антон сабуров
+http://java-course.ru/begin/
+
+
+Ютуб канал Изучаем Java
+Выпуск 29. Установка PostgreSQL.
+https://www.youtube.com/watch?v=0rPXC57KL-0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=29
+
+https://github.com/java-webinars/java-project/tree/bf4b1b8dc0eb5098533239f55d05ec33bf11780f
+
+
+
+терминал
+шпаргалка по работе с PostgreSQL - https://sergeyem.ru/blog/66
+
+Запускаем  psql з под пользователя postgres:
+sudo -i -u postgres
+psql
+
+
+Запускаем  psql з под пользователя sammy:
+запросит пароль SUDO: 9959095
+sudo -u sammy psql
+
+
+
+
+\l              -  Список БД
+\du             - Показать список пользователей:
+
+\c test_db;     - Соединяемся с базой данных test_db
+\conninfo       - Получение информации о соединении
+
+\dt             - Список таблиц текущей базы данных:
+
+\q              - Выход из базы данных:
