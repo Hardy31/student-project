@@ -111,3 +111,19 @@ CREATE TABLE jc_student_child (
     FOREIGN KEY (c_street_code) REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (c_register_office_id) REFERENCES jc_registre_office(r_office_id) ON DELETE RESTRICT
 );
+
+
+INSERT  INTO jc_street (street_code, street_name) VALUES (1, 'Lenina');
+INSERT  INTO jc_street (street_code, street_name) VALUES
+        (2, 'Karla Marksa'),
+        (3, 'Krupskoi'),
+        (4, 'Pobeda');
+
+SELECT * FROM jc_street;
+
+UPDATE jc_street SET street_name = 'Nezavisimosty' WHERE street_code = '4';
+SELECT * FROM jc_street;
+SELECT street_code AS id, street_name AS name FROM jc_street;
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3);
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3) ORDER BY street_name;
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3) ORDER BY street_name DESC;

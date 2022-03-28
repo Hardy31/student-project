@@ -4,8 +4,8 @@ http://java-course.ru/begin/
 
 
 Ютуб канал Изучаем Java
-Выпуск 33. База данных - структура заявления.
-https://www.youtube.com/watch?v=867utNL0x1U&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=34
+Выпуск 36. Команды для выборки данных из таблиц.
+https://www.youtube.com/watch?v=PWMtTj3yuQs&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=36
 
 https://github.com/java-webinars/java-project/
 
@@ -35,3 +35,15 @@ sudo -u sammy psql
 \dt             - Список таблиц текущей базы данных:
 
 \q              - Выход из базы данных:
+
+
+
+
+
+echo "# Tetris" >> README.md
+git init
+git add README.md
+git commit -m "Release XX"
+git branch -M main
+git remote add origin git@github.com:Hardy31/LearnJava.git
+git push -u origin main
