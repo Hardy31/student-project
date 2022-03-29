@@ -6,12 +6,34 @@ import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 public class SaveStudentOrder
 {
-    public static void main(String[] args) {
-        StudentOrder s = buildStudentOrder(10);
+    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
+    static final String USER = "sammy";
+    static final String PASS = "12345";
+
+    /*  не получается запустить из под пользователя postgres
+    * static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
+    * static final String USER = "postgres";
+    * static final String PASS = "postgres";
+    */
+
+    public static void main(String[] args) throws Exception {
+//        Class.forName("org.postgresql.Driver");
+        final Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement stmt = connection.createStatement();
+        ResultSet result =  stmt.executeQuery("SELECT * FROM jc_street ");
+        while (result.next()){
+            System.out.println(result.getString(1) + " : " + result.getString(2));
+        }
+
+//        StudentOrder s = buildStudentOrder(10);
 //        StudentOrder so = new StudentOrder();
 //        long ans = saveStudentOrder(so);
 //        System.out.println(ans);
