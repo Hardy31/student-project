@@ -10,9 +10,10 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 37. Работа с базой данных из приложения Java.
 
-https://www.youtube.com/watch?v=DJDcfWHzNHU&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=38
+Выпуск 40. Снова работаем с базой данных - делаем наброски справочника.
+
+https://www.youtube.com/watch?v=w5Ddk_h6QSE&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=41
 
 
 
@@ -21,9 +22,11 @@ https://www.youtube.com/watch?v=DJDcfWHzNHU&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
 терминал
 шпаргалка по работе с PostgreSQL - https://sergeyem.ru/blog/66
 
-Запускаем  psql з под пользователя postgres:
-sudo -i -u postgres
-psql
+/*
+* Запускаем  psql з под пользователя postgres:
+* sudo -i -u postgres
+* psql
+*/
 
 
 Запускаем  psql з под пользователя sammy:
@@ -42,6 +45,10 @@ sudo -u sammy psql
 \dt             - Список таблиц текущей базы данных:
 
 \q              - Выход из базы данных:
+
+
+
+
 
 
 

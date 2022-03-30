@@ -1,10 +1,12 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.dao.DirectoriDao;
 import edu.javacourse.studentorder.domain.Address;
 import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.domain.wedding.Street;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,9 +16,9 @@ import java.time.LocalDate;
 
 public class SaveStudentOrder
 {
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
-    static final String USER = "sammy";
-    static final String PASS = "12345";
+//    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
+//    static final String USER = "sammy";
+//    static final String PASS = "12345";
 
     /*  не получается запустить из под пользователя postgres
     * static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
@@ -25,13 +27,14 @@ public class SaveStudentOrder
     */
 
     public static void main(String[] args) throws Exception {
+        new DirectoriDao().findStreets("len");
 //        Class.forName("org.postgresql.Driver");
-        final Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-        Statement stmt = connection.createStatement();
-        ResultSet result =  stmt.executeQuery("SELECT * FROM jc_street ");
-        while (result.next()){
-            System.out.println(result.getString(1) + " : " + result.getString(2));
-        }
+//        final Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+//        Statement stmt = connection.createStatement();
+//        ResultSet result =  stmt.executeQuery("SELECT * FROM jc_street ");
+//        while (result.next()){
+//            System.out.println(result.getString(1) + " : " + result.getString(2));
+//        }
 
 //        StudentOrder s = buildStudentOrder(10);
 //        StudentOrder so = new StudentOrder();
@@ -53,7 +56,9 @@ public class SaveStudentOrder
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
         so.setMarriageOffice("Отдел ЗАГС");
 
-        Address address = new Address("195000", "Заневский пр.", "12", "", "142");
+        Street street = new Street(5,"First");
+
+        Address address = new Address("195000", street, "12", "", "142");
 
         // Муж
         Adult husband = new Adult("Петров", "Виктор", "Сергеевич", LocalDate.of(1997, 8, 24));

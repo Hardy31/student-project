@@ -118,6 +118,9 @@ INSERT  INTO jc_street (street_code, street_name) VALUES
         (2, 'Karla Marksa'),
         (3, 'Krupskoi'),
         (4, 'Pobeda');
+INSERT  INTO jc_street (street_code, street_name) VALUES (5, 'Leninaskoi');
+INSERT  INTO jc_street (street_code, street_name) VALUES (6, 'LeninasKoi');
+INSERT  INTO jc_street (street_code, street_name) VALUES (7, 'Uplena');
 
 SELECT * FROM jc_street;
 
@@ -127,3 +130,11 @@ SELECT street_code AS id, street_name AS name FROM jc_street;
 SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3);
 SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3) ORDER BY street_name;
 SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_code in(2,3) ORDER BY street_name DESC;
+
+
+SELECT street_code AS id, street_name AS name FROM jc_street;
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_name LIKE '%ina%';
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE street_name LIKE '%len%';
+SELECT street_code AS id, street_name AS name FROM jc_street WHERE UPPER(street_name) LIKE UPPER('%len%');
+
+
