@@ -1,6 +1,7 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.dao.DirectoriDao;
+import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
+import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
 import edu.javacourse.studentorder.domain.Address;
 import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.Child;
@@ -27,7 +28,7 @@ public class SaveStudentOrder
     */
 
     public static void main(String[] args) throws Exception {
-        new DirectoriDao().findStreets("len");
+        new DictionaryDaoImpl().findStreets("len");
 //        Class.forName("org.postgresql.Driver");
 //        final Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 //        Statement stmt = connection.createStatement();
