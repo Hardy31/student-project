@@ -1,5 +1,6 @@
 package edu.javacourse.studentorder.dao;
 
+import edu.javacourse.studentorder.config.Config;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
 
@@ -8,9 +9,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DictionaryDaoImpl implements  DictionaryDao {
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
-    static final String USER = "sammy";
-    static final String PASS = "12345";
+//    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
+//    static final String USER = "sammy";
+//    static final String PASS = "12345";
 
     public List<Street> findStreets(String mask)  throws DaoException{
         List<Street> resultList = new LinkedList<>();
@@ -40,7 +41,11 @@ public class DictionaryDaoImpl implements  DictionaryDao {
     }
 
     private Connection getConnection() throws SQLException{
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection connection = DriverManager.getConnection(
+                    Config.getProperty(Config.DB_URL),
+                    Config.getProperty(Config.DB_LOGIN),
+                    Config.getProperty(Config.DB_PASSWORD));
+
             return connection;
     }
 }

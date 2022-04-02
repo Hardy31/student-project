@@ -11,9 +11,17 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 41. Работаем с базой данных - вносим усовершенствования.
+Выпуск 42. Настройки соединения во внешнем файле.
+В этом уроке выносим всю нонфигурационную часть в отдельный блок.
+Текстовый файл  пропертис.
+и пакет для конфигурации программы на основании жанных из пропертис.
 
-https://www.youtube.com/watch?v=qriL-9p1X10&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=41
+выдавало ошибку пока файле Сшташп не заменил путь к конфигурационному файлу на
+getResourceAsStream("edu/javacourse/studentorder/dao.properties")
+с путем папко для ресурса.
+
+
+https://www.youtube.com/watch?v=UtXZN3hnBN4&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=42
 
 
 
