@@ -1,5 +1,7 @@
 package edu.javacourse.studentorder.dao;
 
+import edu.javacourse.studentorder.domain.PassportOffice;
+import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
 
@@ -10,7 +12,7 @@ import java.util.List;
 public interface DictionaryDao {
 
     List<Street> findStreets(String mask) throws DaoException;
-//    public List<Street> findStreets(String mask)  throws DaoException {
-////        List<Street> findStreey = new LinkedList<>();
-//    };
+    List<PassportOffice> findPassportOffice(String areaID) throws DaoException;
+    List<RegisterOffice> findRegisterOffice(String areaID) throws DaoException;
+
 }

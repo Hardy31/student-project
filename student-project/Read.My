@@ -11,17 +11,14 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 42. Настройки соединения во внешнем файле.
-В этом уроке выносим всю нонфигурационную часть в отдельный блок.
-Текстовый файл  пропертис.
-и пакет для конфигурации программы на основании жанных из пропертис.
+ Выпуск 43. Продолжаем создавать справочники..
 
-выдавало ошибку пока файле Сшташп не заменил путь к конфигурационному файлу на
-getResourceAsStream("edu/javacourse/studentorder/dao.properties")
-с путем папко для ресурса.
+Создали файл student_data.sql шаблоны для заполнения   справочников.
 
 
-https://www.youtube.com/watch?v=UtXZN3hnBN4&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=42
+
+
+https://www.youtube.com/watch?v=6ShHHfqZHvs&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=45
 
 
 
@@ -53,6 +50,10 @@ sudo -u sammy psql
 \dt             - Список таблиц текущей базы данных:
 
 \q              - Выход из базы данных:
+
+SELECT column_name, column_default, data_type
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = 'jc_street';
 
 
 
