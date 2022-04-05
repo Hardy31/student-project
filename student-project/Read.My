@@ -11,14 +11,20 @@ https://github.com/java-webinars/java-project/
 
 
 
- Выпуск 43. Продолжаем создавать справочники..
+Выпуск 44. И опять продолжаем создавать справочники.
 
-Создали файл student_data.sql шаблоны для заполнения   справочников.
+like
+
+select * from jc_country_struct where area_id like '__0000000000';
+
+select * from jc_country_struct where area_id like '02___0000000' and area_id <> '020000000000';
+select * from jc_country_struct where area_id like '02001___0000' and area_id <> '020010000000';
+select * from jc_country_struct where area_id like '02001001____' and area_id <> '020010010000';
 
 
+select * from jc_country_struct where area_id like '02__________' and area_id <> '020000000000';
 
-
-https://www.youtube.com/watch?v=6ShHHfqZHvs&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=45
+https://www.youtube.com/watch?v=MHfNgV3stB0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=44
 
 
 

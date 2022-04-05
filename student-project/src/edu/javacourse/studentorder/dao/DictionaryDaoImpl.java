@@ -1,6 +1,7 @@
 package edu.javacourse.studentorder.dao;
 
 import edu.javacourse.studentorder.config.Config;
+import edu.javacourse.studentorder.domain.CountryArea;
 import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.wedding.Street;
@@ -21,6 +22,12 @@ private  static  final String GET_PASSPORT = "SELECT p_office_id AS id, p_office
         "WHERE p_office_area_id = ? ";
 private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office_area_id AS code , r_office_name AS name FROM jc_registre_office " +
         "WHERE r_office_area_id = ? ";
+
+//    select * from jc_country_struct where area_id like '02___0000000' and area_id <> '020000000000';
+//private  static  final String GET_AREA = "SELECT area_id AS id, area_name AS name  FROM jc_country_struct " +
+//        "WHERE area_id LIKE ? AND area_id <> ?";
+private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
+        "WHERE area_id LIKE ? AND area_id <> ?";
 
     public List<Street> findStreets(String mask)  throws DaoException{
         List<Street> resultList = new LinkedList<>();
@@ -73,8 +80,7 @@ private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office
 //            То и из Setaмы должны обращаться к столдбцам как id и Name а не как названия строк в таблице!
 
                 System.out.println();
-                System.out.println(result.getLong("id") +" : "+
-                        result.getString("code")+" : "+
+                System.out.println(result.getString("id")+" : "+
                         result.getString("name"));
             }
 
@@ -116,6 +122,59 @@ private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office
         }
         return  resultList;
     }
+
+    @Override
+    public List<CountryArea> findArea(String areaId) throws DaoException {
+        List<CountryArea> resultList = new LinkedList<>();
+
+        try(Connection con = getConnection();
+//SELECT area_id AS id, area_named AS name  FROM jc_country_struct WHERE area_id LIKE ? AND area_id <> ?";
+            PreparedStatement stmt = con.prepareStatement(GET_AREA)){
+
+            String param1 = bildParam(areaId);
+            String param2 = areaId;
+            stmt.setString(1, param1 );
+            stmt.setString(2, param2 );
+
+            System.out.println(stmt.toString());
+            ResultSet result =  stmt.executeQuery();
+            while (result.next()){
+                CountryArea CountryArea = new CountryArea(
+                        result.getString("area_id"),
+                        result.getString("area_name"));
+                resultList.add(CountryArea);
+
+//            Так как в запросе мы написали street_code AS id, street_name AS name.
+//            То и из Setaмы должны обращаться к столдбцам как id и Name а не как названия строк в таблице!
+
+                System.out.println();
+                System.out.println(result.getLong("area_id") +" : "+
+                        result.getString("area_name"));
+            }
+
+        } catch (SQLException e){
+            throw new DaoException(e);
+
+        }
+        return  resultList;
+    }
+
+    private String bildParam(String areaId) {
+        String result = "";
+        if (areaId == null || areaId.trim().isEmpty()){
+            result =  "__0000000000";
+        }
+        else if (areaId.endsWith("0000000000"))  {
+            result =   areaId.substring(0,2) + "___0000000";
+        } else if (areaId.endsWith("0000000")) {
+            result=   areaId.substring(0,5) + "___0000";
+        }else if (areaId.endsWith("0000")) {
+            result =   areaId.substring(0,8) + "____";
+        }
+        return result;
+    }
+
+
 }
 
 
