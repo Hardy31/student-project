@@ -15,8 +15,7 @@ public class DictionaryDaoImpl implements  DictionaryDao {
 //    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
 //    static final String USER = "sammy";
 //    static final String PASS = "12345";
-
-    private  static  final String GET_STREET = "SELECT street_code AS id, street_name AS name FROM jc_street " +
+private  static  final String GET_STREET = "SELECT street_code AS id, street_name AS name FROM jc_street " +
             "WHERE UPPER(street_name) LIKE UPPER(?) ";
 private  static  final String GET_PASSPORT = "SELECT p_office_id AS id, p_office_area_id AS code , p_office_name AS name FROM jc_passport_office " +
         "WHERE p_office_area_id = ? ";
@@ -159,19 +158,23 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
         return  resultList;
     }
 
-    private String bildParam(String areaId) {
+    private String bildParam(String areaId) throws SQLException{
         String result = "";
         if (areaId == null || areaId.trim().isEmpty()){
             result =  "__0000000000";
+            return result;
         }
         else if (areaId.endsWith("0000000000"))  {
             result =   areaId.substring(0,2) + "___0000000";
+            return result;
         } else if (areaId.endsWith("0000000")) {
             result=   areaId.substring(0,5) + "___0000";
+            return result;
         }else if (areaId.endsWith("0000")) {
             result =   areaId.substring(0,8) + "____";
+            return result;
         }
-        return result;
+        throw  new SQLException(" Invalid parameter 'areaId' : " + areaId);
     }
 
 

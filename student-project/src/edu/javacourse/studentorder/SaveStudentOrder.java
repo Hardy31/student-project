@@ -27,7 +27,7 @@ public class SaveStudentOrder
         new DictionaryDaoImpl().findStreets("len");
         new DictionaryDaoImpl().findPassportOffice("020010010001");
         new DictionaryDaoImpl().findRegisterOffice("020010010002");
-        new DictionaryDaoImpl().findArea("010000000000");
+        new DictionaryDaoImpl().findArea("020010000000");
 
 
 
