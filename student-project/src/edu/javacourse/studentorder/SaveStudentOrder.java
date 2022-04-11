@@ -2,13 +2,13 @@ package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
 import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
+import edu.javacourse.studentorder.dao.StudentDaiImpl;
+import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.wedding.Street;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class SaveStudentOrder
@@ -24,10 +24,11 @@ public class SaveStudentOrder
     */
 
     public static void main(String[] args) throws Exception {
-        new DictionaryDaoImpl().findStreets("len");
-        new DictionaryDaoImpl().findPassportOffice("020010010001");
-        new DictionaryDaoImpl().findRegisterOffice("020010010002");
-        new DictionaryDaoImpl().findArea("020010000000");
+//        new DictionaryDaoImpl().findStreets("len");
+//        new DictionaryDaoImpl().findPassportOffice("020010010001");
+//        new DictionaryDaoImpl().findRegisterOffice("020010010002");
+//        new DictionaryDaoImpl().findArea("020010000000");
+
 
 
 
@@ -35,6 +36,12 @@ public class SaveStudentOrder
 //        StudentOrder so = new StudentOrder();
 //        long ans = saveStudentOrder(so);
 //        System.out.println(ans);
+
+        StudentOrder s = buildStudentOrder(25);
+        StudentOrderDao dao = new StudentDaiImpl();
+        Long id = dao.saveStudentOrder(s);
+
+        System.out.println(id);
     }
 
     static long saveStudentOrder() {
@@ -53,7 +60,10 @@ public class SaveStudentOrder
         so.setStudentOrderId(id);
         so.setMarriageCertificateId("" + (123456000 + id));
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
-        so.setMarriageOffice("Отдел ЗАГС");
+
+
+        PassportOffice ro = new PassportOffice(1L, "", "");
+        so.setMarriageOffice(ro);
 
         Street street = new Street(5,"First");
 

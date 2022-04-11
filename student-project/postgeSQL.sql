@@ -1,6 +1,8 @@
 --DDL
 
 --DROP TABLE IF EXISTS st_adress;
+
+
 --
 --CREATE TABLE st_adress (
 --	address_id SERIAL,
@@ -51,6 +53,8 @@ CREATE TABLE jc_registre_office(
      PRIMARY KEY (r_office_id),
      FOREIGN KEY (r_office_area_id) REFERENCES jc_country_struct(area_id) ON DELETE RESTRICT
 );
+
+--DROP TABLE jc_student_order;
 
 CREATE TABLE jc_student_order (
     student_order_id SERIAL,

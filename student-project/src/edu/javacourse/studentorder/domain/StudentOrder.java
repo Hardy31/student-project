@@ -33,7 +33,16 @@ public class StudentOrder
     private Adult wife;
     private List<Child> children;
     private String marriageCertificateId;
-    private String marriageOffice;
+
+    public PassportOffice getMarriageOffice() {
+        return marriageOffice;
+    }
+
+    public void setMarriageOffice(PassportOffice marriageOffice) {
+        this.marriageOffice = marriageOffice;
+    }
+
+    private PassportOffice marriageOffice;
     private LocalDate marriageDate;
 
     public long getStudentOrderId() {
@@ -79,13 +88,7 @@ public class StudentOrder
         this.marriageCertificateId = marriageCertificateId;
     }
 
-    public String getMarriageOffice() {
-        return marriageOffice;
-    }
 
-    public void setMarriageOffice(String marriageOffice) {
-        this.marriageOffice = marriageOffice;
-    }
 
     public LocalDate getMarriageDate() {
         return marriageDate;
