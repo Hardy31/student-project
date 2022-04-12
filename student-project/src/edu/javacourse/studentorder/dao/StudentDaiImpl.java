@@ -8,10 +8,7 @@ import edu.javacourse.studentorder.domain.StudentOrderStatus;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,66 +30,57 @@ public class StudentDaiImpl implements StudentOrderDao{
 
     @Override
     public Long saveStudentOrder(StudentOrder so) throws DaoException {
-        try(Connection con = getConnection();
-                PreparedStatement stmt = con.prepareStatement(INSERT_ORDER)){
+        Long result = -1l;
+
+         try(Connection con = getConnection();
+                PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String []{"student_order_id"})){
                     //Header
                     stmt.setInt(1, StudentOrderStatus.START.ordinal());
                     stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 
-                    //Huasbend
-                    Adult husbend = so.getHusband();
-                    stmt.setString(3, husbend.getSurName());
-                    stmt.setString(4, husbend.getGivenName());
-                    stmt.setString(5, husbend.getPatronymic());
-                    stmt.setDate(6, java.sql.Date.valueOf(husbend.getDateOfBirth()));
-                    stmt.setString(7, husbend.getPassportSeria());
-                    stmt.setString(8, husbend.getPassportNumber());
-                    stmt.setDate(9, java.sql.Date.valueOf(husbend.getIssueDate()));
-                    stmt.setLong(10, husbend.getIssueDepartment().getOfficeId());
-                    //Huasbend Adress
-                    Address h_adress = husbend.getAddress();
-                    stmt.setString(11, h_adress.getPostCode());
-                    stmt.setLong(12, h_adress.getStreet().getStreetCode());
-                    stmt.setString(13, h_adress.getBuilding());
-                    stmt.setString(14, h_adress.getExtension());
-                    stmt.setString(15, h_adress.getApartment());
-
-                    //Wife
-                    Adult wife = so.getWife();
-                    stmt.setString(16, wife.getSurName());
-                    stmt.setString(17, wife.getGivenName());
-                    stmt.setString(18, wife.getPatronymic());
-                    stmt.setDate(19, java.sql.Date.valueOf(wife.getDateOfBirth()));
-                    stmt.setString(20, wife.getPassportSeria());
-                    stmt.setString(21, wife.getPassportNumber());
-                    stmt.setDate(22, java.sql.Date.valueOf(wife.getIssueDate()));
-                    stmt.setLong(23, wife.getIssueDepartment().getOfficeId());
-                    //Huasbend Adress
-                    Address w_adress = wife.getAddress();
-                    stmt.setString(24, w_adress.getPostCode());
-                    stmt.setLong(25, w_adress.getStreet().getStreetCode());
-                    stmt.setString(26, w_adress.getBuilding());
-                    stmt.setString(27, w_adress.getExtension());
-                    stmt.setString(28, w_adress.getApartment());
-
+                    writingParanToStatement(stmt, 3, so.getHusband());
+                    writingParanToStatement(stmt, 16, so.getWife());
 
                     stmt.setString(29, so.getMarriageCertificateId());
                     stmt.setLong(30, so.getMarriageOffice().getOfficeId());
                     stmt.setDate(31, java.sql.Date.valueOf(so.getMarriageDate()));
 
                     stmt.executeUpdate();
+                    ResultSet gkRs =   stmt.getGeneratedKeys();
+                    if(gkRs.next()) {
+                        result = gkRs.getLong(1);
+                    }
 
                 } catch (SQLException e){
                 throw new DaoException(e);
 
                 }
-                return  0l;
+                return  result;
 
 
 
 
 
     }
+
+    private void writingParanToStatement(PreparedStatement stmt, int start, Adult adult) throws SQLException {
+        stmt.setString(start, adult.getSurName());
+        stmt.setString(start+1, adult.getGivenName());
+        stmt.setString(start+2, adult.getPatronymic());
+        stmt.setDate(start+3, Date.valueOf(adult.getDateOfBirth()));
+        stmt.setString(start+4, adult.getPassportSeria());
+        stmt.setString(start+5, adult.getPassportNumber());
+        stmt.setDate(start+6, Date.valueOf(adult.getIssueDate()));
+        stmt.setLong(start+7, adult.getIssueDepartment().getOfficeId());
+        //Huasbend Adress
+        Address h_adress = adult.getAddress();
+        stmt.setString(start+8, h_adress.getPostCode());
+        stmt.setLong(start+9, h_adress.getStreet().getStreetCode());
+        stmt.setString(start+10, h_adress.getBuilding());
+        stmt.setString(start+11, h_adress.getExtension());
+        stmt.setString(start+12, h_adress.getApartment());
+    }
+
     private Connection getConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(
                 Config.getProperty(Config.DB_URL),
