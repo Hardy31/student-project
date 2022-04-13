@@ -8,41 +8,42 @@ package edu.javacourse.studentorder.domain;
 //        FOREIGN KEY (r_office_area_id) REFERENCES jc_country_struct(area_id) ON DELETE RESTRICT
 //        );
 
-public class RegisterOffice {
-    private Long registerId;
-    private String registerAreaId;
-    private String registerName;
+public class RegisterOffice
+{
+    private Long officeId;
+    private String officeAreaId;
+    private String officeName;
 
     public RegisterOffice() {
     }
 
-    public RegisterOffice(Long registerId, String registerAreaId, String registerName) {
-        this.registerId = registerId;
-        this.registerAreaId = registerAreaId;
-        this.registerName = registerName;
+    public RegisterOffice(Long officeId, String officeAreaId, String officeName) {
+        this.officeId = officeId;
+        this.officeAreaId = officeAreaId;
+        this.officeName = officeName;
     }
 
-    public Long getRegisterId() {
-        return registerId;
+    public Long getOfficeId() {
+        return officeId;
     }
 
-    public void setRegisterId(Long registerId) {
-        this.registerId = registerId;
+    public void setOfficeId(Long officeId) {
+        this.officeId = officeId;
     }
 
-    public String getRegisterAreaId() {
-        return registerAreaId;
+    public String getOfficeAreaId() {
+        return officeAreaId;
     }
 
-    public void setRegisterAreaId(String registerAreaId) {
-        this.registerAreaId = registerAreaId;
+    public void setOfficeAreaId(String officeAreaId) {
+        this.officeAreaId = officeAreaId;
     }
 
-    public String getRegisterName() {
-        return registerName;
+    public String getOfficeName() {
+        return officeName;
     }
 
-    public void setRegisterName(String registerName) {
-        this.registerName = registerName;
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
     }
 }

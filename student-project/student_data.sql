@@ -53,4 +53,12 @@ INSERT INTO jc_registre_office (r_office_id, r_office_area_id, r_office_name) VA
     (6, '020020000000', 'ЗАГС Область 2 район 1'),
     (7, '020020000000', 'ЗАГС Область 2 район 2');
 
+   INSERT INTO jc_registre_office (r_office_id, r_office_area_id, r_office_name) VALUES
+        (85, '010010000000', 'ЗАГС 1 район 1 город '),
 
+INSERT INTO jc_student_child (  student_order_id, c_sur_name, c_given_name,  c_patronymic,
+c_date_of_birth,  c_sertificate_number,  c_sertificate_date,  c_register_office_id,  c_post_index,
+    c_street_code,  c_building,  c_extension,  c_apartment)
+       VALUES (1, 'name', 'given_name', 'patronymic', '1998-03-12',
+       'sertificate_number', '1998-03-12', 020010010001, 'sertificate_number', 1,
+       'building', 'extension', 'apartment' );

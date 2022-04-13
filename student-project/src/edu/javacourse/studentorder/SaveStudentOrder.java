@@ -89,13 +89,13 @@ public class SaveStudentOrder
         Child child1 = new Child("Петрова", "Ирина", "Викторовна", LocalDate.of(2018, 6, 29));
         child1.setCertificateNumber("" + (300000 + id));
         child1.setIssueDate(LocalDate.of(2018, 7, 19));
-        child1.setIssueDepartment( new RegisterOffice(85l,"",""));
+        child1.setIssueDepartment( new RegisterOffice(7L,"",""));
         child1.setAddress(address);
         // Ребенок
         Child child2 = new Child("Петров", "Евгений", "Викторович", LocalDate.of(2018, 6, 29));
         child2.setCertificateNumber("" + (400000 + id));
         child2.setIssueDate(LocalDate.of(2018, 7, 19));
-        child2.setIssueDepartment(new RegisterOffice(5l,"020010010002", "ЗАГС Область 1 поселение 2"));
+        child2.setIssueDepartment(new RegisterOffice(5L,"020010010002", "ЗАГС Область 1 поселение 2"));
         child2.setAddress(address);
 
         so.setHusband(husband);

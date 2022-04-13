@@ -88,8 +88,6 @@ public class StudentOrder
         this.marriageCertificateId = marriageCertificateId;
     }
 
-
-
     public LocalDate getMarriageDate() {
         return marriageDate;
     }

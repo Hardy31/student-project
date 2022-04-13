@@ -55,6 +55,9 @@ CREATE TABLE jc_registre_office(
 );
 
 --DROP TABLE jc_student_order;
+--select student_order_id, h_sur_name, w_sur_name, certificate_id, register_office_id from jc_student_order;
+
+jc_student_orderq
 
 CREATE TABLE jc_student_order (
     student_order_id SERIAL,
@@ -115,6 +118,7 @@ CREATE TABLE jc_student_child (
     c_extension VARCHAR(10) ,
     c_apartment VARCHAR(10) ,
     PRIMARY KEY (student_child_id),
+    FOREIGN KEY (student_order_id) REFERENCES jc_student_order(student_order_id) ON DELETE RESTRICT,
     FOREIGN KEY (c_street_code) REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (c_register_office_id) REFERENCES jc_registre_office(r_office_id) ON DELETE RESTRICT
 );
@@ -153,3 +157,11 @@ SELECT street_code AS id, street_name AS name FROM jc_street WHERE UPPER(street_
 --"h_building, h_extension, h_apartment, w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria," +
 -- "w_passport_number, w_passport_date, w_passport_office_id, w_post_index, w_street_code, w_building, w_extension," +
 -- "w_apartment, certificate_id, register_office_id, marriage_date"+
+
+
+
+INSERT INTO jc_student_child (
+    student_child_id SERIAL, student_order_id, c_sur_name, c_given_name, c_patronymic,
+    c_date_of_birth, c_sertificate_number, c_sertificate_date, c_register_office_id, c_post_index,
+    c_street_code, c_building, c_extension, c_apartment)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
