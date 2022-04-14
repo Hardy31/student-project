@@ -24,18 +24,6 @@ public class SaveStudentOrder
     */
 
     public static void main(String[] args) throws Exception {
-//        new DictionaryDaoImpl().findStreets("len");
-//        new DictionaryDaoImpl().findPassportOffice("020010010001");
-//        new DictionaryDaoImpl().findRegisterOffice("020010010002");
-//        new DictionaryDaoImpl().findArea("020010000000");
-
-
-
-
-//        StudentOrder s = buildStudentOrder(10);
-//        StudentOrder so = new StudentOrder();
-//        long ans = saveStudentOrder(so);
-//        System.out.println(ans);
 
         StudentOrder s = buildStudentOrder(25);
         StudentOrderDao dao = new StudentDaiImpl();

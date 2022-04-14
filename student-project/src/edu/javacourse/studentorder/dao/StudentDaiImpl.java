@@ -36,24 +36,37 @@ public class StudentDaiImpl implements StudentOrderDao{
 
          try(Connection con = getConnection();
                 PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String []{"student_order_id"})){
-                    //Header
-                    stmt.setInt(1, StudentOrderStatus.START.ordinal());
-                    stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 
-                    writingParanToStatement(stmt, 3, so.getHusband());
-                    writingParanToStatement(stmt, 16, so.getWife());
+                    con.setAutoCommit(false); // Включение транзакционного режимаж
+                     try {
+                         //Header
+                         stmt.setInt(1, StudentOrderStatus.START.ordinal());
+                         stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 
-                    stmt.setString(29, so.getMarriageCertificateId());
-                    stmt.setLong(30, so.getMarriageOffice().getOfficeId());
-                    stmt.setDate(31, java.sql.Date.valueOf(so.getMarriageDate()));
+                         writingParanToStatement(stmt, 3, so.getHusband());
+                         writingParanToStatement(stmt, 16, so.getWife());
 
-                    stmt.executeUpdate();
-                    ResultSet gkRs =   stmt.getGeneratedKeys();
-                    if(gkRs.next()) {
-                        result = gkRs.getLong(1);
-                    }
+                         stmt.setString(29, so.getMarriageCertificateId());
+                         stmt.setLong(30, so.getMarriageOffice().getOfficeId());
+                         stmt.setDate(31, java.sql.Date.valueOf(so.getMarriageDate()));
 
-                    saveChild( con,  so, result );
+                         stmt.executeUpdate();
+                         ResultSet gkRs =   stmt.getGeneratedKeys();
+
+                         if(gkRs.next()) {
+                             result = gkRs.getLong(1);
+                             System.out.println("сделана запись: "+ result);
+                         }
+
+                         saveChild( con,  so, result );
+                         con.commit();  // Завершение транзакции и записывает в БД
+                     }catch (SQLException sqlException){
+                         con.rollback(); // откатывает все изменения в БД до состояния setAutoCommit(false);
+                         throw  new DaoException();
+                     }
+
+
+//
 
          } catch (SQLException e){
                 throw new DaoException(e);
