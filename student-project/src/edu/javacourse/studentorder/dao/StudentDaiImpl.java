@@ -51,6 +51,7 @@ public class StudentDaiImpl implements StudentOrderDao{
                          stmt.setDate(31, java.sql.Date.valueOf(so.getMarriageDate()));
 
                          stmt.executeUpdate();
+
                          ResultSet gkRs =   stmt.getGeneratedKeys();
 
                          if(gkRs.next()) {
@@ -76,11 +77,19 @@ public class StudentDaiImpl implements StudentOrderDao{
 
 
     private void saveChild(Connection con, StudentOrder so, Long soId) throws SQLException {
+        Long res = -1l;
         try( PreparedStatement stmt = con.prepareStatement(INSERT_CHILD)){
             for(Child child : so.getChildren()){
                 stmt.setLong(1, soId);
                 setParamsFroChild (stmt , child);
-                stmt.executeUpdate();
+//                stmt.executeUpdate();
+                stmt.addBatch();
+            }
+            stmt.executeBatch();
+            ResultSet rs =   stmt.getGeneratedKeys();
+            if(rs.next()) {
+                res = rs.getLong(1);
+                System.out.println("Child  запись: "+ res);
             }
         }
     }
