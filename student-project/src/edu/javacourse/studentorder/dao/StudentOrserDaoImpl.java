@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StudentDaiImpl implements StudentOrderDao{
+public class StudentOrserDaoImpl implements StudentOrderDao{
 
     private  static  final String GET_STUDENT_ORDER = "SELECT * FROM jc_student_order " +
             "WHERE stident  ";
     private  static  final String INSERT_ORDER = "INSERT  INTO jc_student_order ( " +
-            "student_order_stattus, student_order_date," +
+            "student_order_status, student_order_date," +
             " h_sur_name, h_given_name, h_patronymic, h_date_of_birth," +
             "h_passport_seria, h_passport_number, h_passport_date, h_passport_office_id, h_post_index, h_street_code," +
             "h_building, h_extension, h_apartment, w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria," +
@@ -25,9 +25,9 @@ public class StudentDaiImpl implements StudentOrderDao{
 
     private static  final String  INSERT_CHILD ="INSERT INTO jc_student_child (" +
             "     student_order_id, c_sur_name, c_given_name, c_patronymic," +
-            "    c_date_of_birth, c_sertificate_number, c_sertificate_date, c_register_office_id, c_post_index," +
+            "    c_date_of_birth, c_certificate_number, c_certificate_date, c_register_office_id, c_post_index," +
             "    c_street_code, c_building, c_extension, c_apartment)" +
-            "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+            "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 
     @Override
@@ -35,10 +35,13 @@ public class StudentDaiImpl implements StudentOrderDao{
         Long result = -1l;
 
          try(Connection con = getConnection();
-                PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String []{"student_order_id"})){
 
-                    con.setAutoCommit(false); // Включение транзакционного режимаж
-                     try {
+                PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String []{"student_order_id"})){
+             System.out.println(" PSQL Connect");
+
+             con.setAutoCommit(false);
+             try {
+
                          //Header
                          stmt.setInt(1, StudentOrderStatus.START.ordinal());
                          stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
@@ -61,11 +64,11 @@ public class StudentDaiImpl implements StudentOrderDao{
 
                          saveChild( con,  so, result );
                          con.commit();  // Завершение транзакции и записывает в БД
-                     }catch (SQLException sqlException){
-                         con.rollback(); // откатывает все изменения в БД до состояния setAutoCommit(false);
-                         throw  new DaoException();
-                     }
 
+             } catch(SQLException ex) {
+                 con.rollback();
+                 throw ex;
+             }
 
 //
 

@@ -2,8 +2,9 @@ package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
 import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
-import edu.javacourse.studentorder.dao.StudentDaiImpl;
+
 import edu.javacourse.studentorder.dao.StudentOrderDao;
+import edu.javacourse.studentorder.dao.StudentOrserDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.wedding.Street;
 
@@ -17,16 +18,12 @@ public class SaveStudentOrder
 //    static final String USER = "sammy";
 //    static final String PASS = "12345";
 
-    /*  не получается запустить из под пользователя postgres
-    * static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    * static final String USER = "postgres";
-    * static final String PASS = "postgres";
-    */
+
 
     public static void main(String[] args) throws Exception {
 
         StudentOrder s = buildStudentOrder(25);
-        StudentOrderDao dao = new StudentDaiImpl();
+        StudentOrderDao dao = new StudentOrserDaoImpl();
         Long id = dao.saveStudentOrder(s);
 
         System.out.println(id);
