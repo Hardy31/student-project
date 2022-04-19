@@ -62,14 +62,24 @@ public class SaveStudentOrder
         husband.setIssueDepartment(new PassportOffice(4l,"020010010001", "Паспортный стол  область 1 посеение 1 "));
         husband.setStudentId("" + (100000 + id));
         husband.setAddress(address);
+        husband.setUnivesity(new University(2L, ""));
+        husband.setStudentId("HH12345");
+
+
+
         // Жена
         Adult wife = new Adult("Петрова", "Вероника", "Алекссевна", LocalDate.of(1998, 3, 12));
         wife.setPassportSeria("" + (2000 + id));
         wife.setPassportNumber("" + (200000 + id));
         wife.setIssueDate(LocalDate.of(2018, 4, 5));
-        wife.setIssueDepartment(new PassportOffice(99l,"", ""));
+        wife.setIssueDepartment(new PassportOffice(8l,"", ""));
         wife.setStudentId("" + (200000 + id));
         wife.setAddress(address);
+        wife.setUnivesity(new University(1L, ""));
+        wife.setStudentId("WW12345");
+
+
+
         // Ребенок
         Child child1 = new Child("Петрова", "Ирина", "Викторовна", LocalDate.of(2018, 6, 29));
         child1.setCertificateNumber("" + (300000 + id));

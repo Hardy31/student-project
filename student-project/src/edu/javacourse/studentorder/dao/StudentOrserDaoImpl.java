@@ -18,10 +18,10 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
             "student_order_status, student_order_date," +
             " h_sur_name, h_given_name, h_patronymic, h_date_of_birth," +
             "h_passport_seria, h_passport_number, h_passport_date, h_passport_office_id, h_post_index, h_street_code," +
-            "h_building, h_extension, h_apartment, w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria," +
+            "h_building, h_extension, h_apartment, h_university_id, h_student_number, w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria," +
             "w_passport_number, w_passport_date, w_passport_office_id, w_post_index, w_street_code, w_building, w_extension," +
-            "w_apartment, certificate_id, register_office_id, marriage_date )"+
-            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?   ); ";
+            "w_apartment,w_university_id, w_student_number, certificate_id, register_office_id, marriage_date )"+
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?  ); ";
 
     private static  final String  INSERT_CHILD ="INSERT INTO jc_student_child (" +
             "     student_order_id, c_sur_name, c_given_name, c_patronymic," +
@@ -47,11 +47,11 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
                          stmt.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 
                          writingParanToStatement(stmt, 3, so.getHusband());
-                         writingParanToStatement(stmt, 16, so.getWife());
+                         writingParanToStatement(stmt, 18, so.getWife());
 
-                         stmt.setString(29, so.getMarriageCertificateId());
-                         stmt.setLong(30, so.getMarriageOffice().getOfficeId());
-                         stmt.setDate(31, java.sql.Date.valueOf(so.getMarriageDate()));
+                         stmt.setString(33, so.getMarriageCertificateId());
+                         stmt.setLong(34, so.getMarriageOffice().getOfficeId());
+                         stmt.setDate(35, java.sql.Date.valueOf(so.getMarriageDate()));
 
                          stmt.executeUpdate();
 
@@ -115,6 +115,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         stmt.setString(start+10, h_adress.getBuilding());
         stmt.setString(start+11, h_adress.getExtension());
         stmt.setString(start+12, h_adress.getApartment());
+        stmt.setLong(start+13, adult.getUnivesity().getUniversityId());
+        stmt.setString(start+14, adult.getStudentId());
     }
 
 
