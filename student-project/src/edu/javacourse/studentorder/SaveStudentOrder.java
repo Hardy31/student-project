@@ -11,6 +11,7 @@ import edu.javacourse.studentorder.domain.wedding.Street;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 public class SaveStudentOrder
 {
@@ -26,7 +27,17 @@ public class SaveStudentOrder
         StudentOrderDao dao = new StudentOrserDaoImpl();
         Long id = dao.saveStudentOrder(s);
 
-        System.out.println(id);
+
+        List<StudentOrder> soList = dao.getStudentOrders();
+        int sz = soList.size();
+        System.out.println( "SIZE - "+sz);
+        for (StudentOrder so : soList){
+            if (so != null){
+                System.out.println( "SO data - "+ so.getMarriageDate() );
+            }
+
+        }
+//        System.out.println(id);
     }
 
     static long saveStudentOrder() {
@@ -47,7 +58,7 @@ public class SaveStudentOrder
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
 
 
-        PassportOffice ro = new PassportOffice(1L, "", "");
+        RegisterOffice ro = new RegisterOffice(1L, "", "");
         so.setMarriageOffice(ro);
 
         Street street = new Street(5,"First");

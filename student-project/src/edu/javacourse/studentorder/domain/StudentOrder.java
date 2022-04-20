@@ -10,6 +10,11 @@ public class StudentOrder
 {
     private long studentOrderId;
     private  StudentOrderStatus studentOrderStatus;
+    private LocalDateTime studentOrderDate;
+    private Adult husband;
+    private Adult wife;
+    private List<Child> children;
+    private String marriageCertificateId;
 
     public StudentOrderStatus getStudentOrderStatus() {
         return studentOrderStatus;
@@ -27,22 +32,16 @@ public class StudentOrder
         this.studentOrderDate = studentOrderDate;
     }
 
-    private LocalDateTime studentOrderDate;
 
-    private Adult husband;
-    private Adult wife;
-    private List<Child> children;
-    private String marriageCertificateId;
-
-    public PassportOffice getMarriageOffice() {
+    public RegisterOffice getMarriageOffice() {
         return marriageOffice;
     }
 
-    public void setMarriageOffice(PassportOffice marriageOffice) {
+    public void setMarriageOffice(RegisterOffice marriageOffice) {
         this.marriageOffice = marriageOffice;
     }
 
-    private PassportOffice marriageOffice;
+    private RegisterOffice marriageOffice;
     private LocalDate marriageDate;
 
     public long getStudentOrderId() {
