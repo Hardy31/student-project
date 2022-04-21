@@ -23,9 +23,9 @@ public class SaveStudentOrder
 
     public static void main(String[] args) throws Exception {
 
-        StudentOrder s = buildStudentOrder(25);
+//        StudentOrder s = buildStudentOrder(25);
         StudentOrderDao dao = new StudentOrserDaoImpl();
-        Long id = dao.saveStudentOrder(s);
+//        Long id = dao.saveStudentOrder(s);
 
 
         List<StudentOrder> soList = dao.getStudentOrders();

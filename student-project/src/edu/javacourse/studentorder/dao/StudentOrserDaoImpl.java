@@ -6,6 +6,7 @@ import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -169,6 +170,13 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
                     StudentOrder so = new StudentOrder();
                     fillStudentOrder(rs, so);
                     fillMarriage(rs, so);
+
+                    Adult husbend = fillAdult(rs, "h_");
+                    Adult wife = fillAdult(rs, "w_");
+                    so.setHusband(husbend);
+                    so.setWife(wife);
+
+
                     resulr.add(so);
                 }
 
@@ -182,6 +190,7 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
 
         return resulr;
     }
+
 
 
 
@@ -199,6 +208,38 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         RegisterOffice ro = new RegisterOffice(roid, "face RegOfic ID", "face RegOfic Name ");
         so.setMarriageOffice(ro);
 
+    }
+    private Adult fillAdult(ResultSet rs, String p) throws SQLException, DaoException{
+        String surName = rs.getString(p+"sur_name");
+        String givenName = rs.getString(p+"given_name");
+        String patronymic = rs.getString(p+"patronymic");
+        LocalDate dateOfBirth = rs.getDate(p+"date_of_birth").toLocalDate();
+        String passportSeria  = rs.getString(p+"passport_seria");
+        String passportNumber  = rs.getString(p+"passport_number");
+        LocalDate passportDate = rs.getDate(p+"passport_date").toLocalDate();
+        Long passportOfOfficeIid = rs.getLong(p+"passport_office_id");
+        String pastIndex  = rs.getString(p+"post_index");
+        Long streetCode = rs.getLong(p+"street_code");
+        String building  = rs.getString(p+"building");
+        String extension  = rs.getString(p+"extension");
+        String apartment  = rs.getString(p+"apartment");
+        Long universityId = rs.getLong(p+"university_id");
+        String studentNumber  = rs.getString(p+"student_number");
+
+        Adult adult= new Adult( surName,  givenName,  patronymic,  dateOfBirth) ;
+        adult.setPassportSeria(passportSeria);
+        adult.setPassportNumber(passportNumber);
+        adult.setIssueDate(passportDate);
+
+        PassportOffice adaltPasportOffice = new PassportOffice( passportOfOfficeIid, "020010010001", "Паспортный стол  область 1 посеение 1 ") ;//Есть вопросы
+        adult.setIssueDepartment(adaltPasportOffice);
+
+        Street  street = new Street(streetCode, "streetName");
+        Address adultAdress = new Address(pastIndex, street, building, extension, apartment);
+        University university = new University(universityId, "university Name");
+        adult.setUnivesity(university);
+        adult.setStudentId(studentNumber);
+        return adult;
     }
 
 }
