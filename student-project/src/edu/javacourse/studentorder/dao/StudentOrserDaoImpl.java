@@ -13,9 +13,16 @@ import java.util.List;
 
 public class StudentOrserDaoImpl implements StudentOrderDao{
 
-    private  static  final String SELECT_ORDERS = "SELECT * FROM jc_student_order AS so "+
-            "INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id "+
-            "WHERE student_order_status = 0 ORDER BY student_order_date; ";
+    private  static  final String SELECT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
+            "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name," +
+            " wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name " +
+            "FROM jc_student_order AS so INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id " +
+            "INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id " +
+            "INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id " +
+            "WHERE student_order_status = 0 ORDER BY student_order_date;";
+
+
+
     private  static  final String INSERT_ORDER = "INSERT  INTO jc_student_order ( " +
             "student_order_status, student_order_date," +
             " h_sur_name, h_given_name, h_patronymic, h_date_of_birth," +
@@ -221,7 +228,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         String passportSeria  = rs.getString(p+"passport_seria");
         String passportNumber  = rs.getString(p+"passport_number");
         LocalDate passportDate = rs.getDate(p+"passport_date").toLocalDate();
-        Long passportOfOfficeIid = rs.getLong(p+"passport_office_id");
+//        Long passportOfOfficeIid = rs.getLong(p+"passport_office_id");
+
         String pastIndex  = rs.getString(p+"post_index");
         Long streetCode = rs.getLong(p+"street_code");
         String building  = rs.getString(p+"building");
@@ -235,7 +243,14 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         adult.setPassportNumber(passportNumber);
         adult.setIssueDate(passportDate);
 
-        PassportOffice adaltPasportOffice = new PassportOffice( passportOfOfficeIid, "020010010001", "Паспортный стол  область 1 посеение 1 ") ;//Есть вопросы
+        //passport Adalt
+
+        Long poId = rs.getLong(p+"passport_office_id");
+        String poAreaCod = rs.getString( p +"p_office_area_id");
+        String poName = rs.getString( p +"p_office_name");
+
+
+        PassportOffice adaltPasportOffice = new PassportOffice( poId, poAreaCod, poName) ;
         adult.setIssueDepartment(adaltPasportOffice);
 
         Street  street = new Street(streetCode, "streetName");
