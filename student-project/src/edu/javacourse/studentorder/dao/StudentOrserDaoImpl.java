@@ -13,7 +13,9 @@ import java.util.List;
 
 public class StudentOrserDaoImpl implements StudentOrderDao{
 
-    private  static  final String SELECT_ORDERS = "SELECT * FROM jc_student_order WHERE student_order_status = 0 ORDER BY student_order_date; ";
+    private  static  final String SELECT_ORDERS = "SELECT * FROM jc_student_order AS so "+
+            "INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id "+
+            "WHERE student_order_status = 0 ORDER BY student_order_date; ";
     private  static  final String INSERT_ORDER = "INSERT  INTO jc_student_order ( " +
             "student_order_status, student_order_date," +
             " h_sur_name, h_given_name, h_patronymic, h_date_of_birth," +
@@ -205,7 +207,9 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         so.setMarriageDate(rs.getDate("marriage_date").toLocalDate());
 
         Long roid = rs.getLong("register_office_id");
-        RegisterOffice ro = new RegisterOffice(roid, "face RegOfic ID", "face RegOfic Name ");
+        String roCode = rs.getString("r_office_area_id");
+        String  roName = rs.getString("r_office_name");
+        RegisterOffice ro = new RegisterOffice(roid, roCode, roName);
         so.setMarriageOffice(ro);
 
     }
