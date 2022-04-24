@@ -10,8 +10,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentOrserDaoImpl implements StudentOrderDao{
+//  старый
+//    private  static  final String SELECT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
+//            "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name," +
+//            " wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name " +
+//            "FROM jc_student_order AS so INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id " +
+//            "INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id " +
+//            "INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id " +
+//            "WHERE student_order_status = 0 ORDER BY student_order_date;";
 
     private  static  final String SELECT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
             "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name," +
@@ -19,7 +28,12 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
             "FROM jc_student_order AS so INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id " +
             "INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id " +
             "INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id " +
-            "WHERE student_order_status = 0 ORDER BY student_order_date;";
+            "WHERE student_order_status = ? ORDER BY student_order_date;";
+
+    private  static final String SELECT_CHILD =
+            "SELECT soc.*, ro.r_office_area_id, ro.r_office_name FROM jc_student_child AS soc " +
+            "INNER JOIN jc_register_office AS ro ON ro.r_office_id = soc.c_register_office_id " +
+            "WHERE soc.student_order_id IN ";
 
 
 
@@ -169,13 +183,12 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         try(Connection con = getConnection();
 
             PreparedStatement stmt = con.prepareStatement(SELECT_ORDERS)){
+            stmt.setInt(1, StudentOrderStatus.START.ordinal() );
             ResultSet rs = stmt.executeQuery();
+//            List<Long> ids = new LinkedList<>();
 
-//            System.out.println(rs.getLong("student_order_id"));
                 while (rs.next()){
-                    System.out.println(rs.getLong("student_order_id"));
-                    System.out.println(rs.getTimestamp("student_order_date").toLocalDateTime());
-                    System.out.println(StudentOrderStatus.fromValues(rs.getInt("student_order_status")));
+
                     StudentOrder so = new StudentOrder();
                     fillStudentOrder(rs, so);
                     fillMarriage(rs, so);
@@ -187,8 +200,17 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
 
 
                     resulr.add(so);
-                }
 
+
+//                    ids.add(so.getStudentOrderId());
+                }
+//                StringBuilder sb = new StringBuilder("(");
+//                    for(Long id: ids){
+//                        sb.append((sb.length()>1 ? ",": "") + String.valueOf(id) );
+//                    }
+//                sb.append(")");
+
+            findChild(con, resulr);
 
             rs.close();
 
@@ -201,7 +223,18 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
     }
 
 
+    private  void findChild(Connection con, List<StudentOrder> result) throws SQLException {
+        String cl  = "(" + result.stream().map(so-> String.valueOf(so.getStudentOrderId())).collect(Collectors.joining(",")) + ")";
 
+        try (PreparedStatement stmt = con.prepareStatement(SELECT_CHILD+cl)){
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                System.out.println( "NTCN    " +rs.getLong(1 ) + rs.getString(3));
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
 
     private void fillStudentOrder(ResultSet rs, StudentOrder so) throws SQLException {
         so.setStudentOrderId(rs.getLong("student_order_id"));
@@ -228,13 +261,12 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         String passportSeria  = rs.getString(p+"passport_seria");
         String passportNumber  = rs.getString(p+"passport_number");
         LocalDate passportDate = rs.getDate(p+"passport_date").toLocalDate();
-//        Long passportOfOfficeIid = rs.getLong(p+"passport_office_id");
 
         String pastIndex  = rs.getString(p+"post_index");
         Long streetCode = rs.getLong(p+"street_code");
-        String building  = rs.getString(p+"building");
-        String extension  = rs.getString(p+"extension");
-        String apartment  = rs.getString(p+"apartment");
+//        String building  = rs.getString(p+"building");
+//        String extension  = rs.getString(p+"extension");
+//        String apartment  = rs.getString(p+"apartment");
         Long universityId = rs.getLong(p+"university_id");
         String studentNumber  = rs.getString(p+"student_number");
 
@@ -253,8 +285,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
         PassportOffice adaltPasportOffice = new PassportOffice( poId, poAreaCod, poName) ;
         adult.setIssueDepartment(adaltPasportOffice);
 
-        Street  street = new Street(streetCode, "streetName");
-        Address adultAdress = new Address(pastIndex, street, building, extension, apartment);
+//        Street  street = new Street(streetCode, "streetName");
+
         University university = new University(universityId, "university Name");
         adult.setUnivesity(university);
         adult.setStudentId(studentNumber);

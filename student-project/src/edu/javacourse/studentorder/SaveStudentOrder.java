@@ -1,15 +1,11 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
-import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
 
 import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.dao.StudentOrserDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.wedding.Street;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,34 +25,15 @@ public class SaveStudentOrder
 
 
         List<StudentOrder> soList = dao.getStudentOrders();
-        int sz = soList.size();
-        System.out.println( "SIZE - "+sz);
-        for (StudentOrder so : soList){
-            if (so != null){
-                System.out.println( "SO data - "+ so.getMarriageDate() );
-            }
 
-        }
-//        System.out.println(id);
     }
 
-    static long saveStudentOrder() {
-        return saveStudentOrder();
-    }
-
-    static long saveStudentOrder(StudentOrder studentOrder) {
-        long answer = 199;
-        System.out.println("saveStudentOrder");
-
-        return answer;
-    }
 
     public static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
         so.setMarriageCertificateId("" + (123456000 + id));
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
-
 
         RegisterOffice ro = new RegisterOffice(1L, "", "");
         so.setMarriageOffice(ro);
@@ -76,8 +53,6 @@ public class SaveStudentOrder
         husband.setUnivesity(new University(2L, ""));
         husband.setStudentId("HH12345");
 
-
-
         // Жена
         Adult wife = new Adult("Петрова", "Вероника", "Алекссевна", LocalDate.of(1998, 3, 12));
         wife.setPassportSeria("" + (2000 + id));
@@ -88,8 +63,6 @@ public class SaveStudentOrder
         wife.setAddress(address);
         wife.setUnivesity(new University(1L, ""));
         wife.setStudentId("WW12345");
-
-
 
         // Ребенок
         Child child1 = new Child("Петрова", "Ирина", "Викторовна", LocalDate.of(2018, 6, 29));
