@@ -25,6 +25,9 @@ public class SaveStudentOrder
 
 
         List<StudentOrder> soList = dao.getStudentOrders();
+        for(StudentOrder so : soList){
+            System.out.println(so.getStudentOrderId());
+        }
 
     }
 
