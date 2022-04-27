@@ -65,3 +65,16 @@ SELECT soc.*, ro.r_office_area_id, ro.r_office_name FROM jc_student_child AS soc
 INNER JOIN jc_register_office AS ro ON ro.r_office_id = soc.c_register_office_id
 WHERE soc.student_order_id in (2, 3, 7)
 ORDER BY student_order_id;
+
+
+
+SELECT so.*, ro.r_office_area_id, ro.r_office_name, hpo.p_office_area_id AS h_p_office_area_id ,
+ hpo.p_office_name AS h_p_office_name, wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name, soc.*,
+ ro_c.r_office_area_id, ro_c.r_office_name
+ FROM jc_student_order AS so
+ INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id
+ INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id
+ INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id
+ INNER JOIN jc_student_child AS soc ON so.student_order_id = soc.student_order_id
+ INNER JOIN jc_register_office AS ro_c ON ro_c.r_office_id = soc.c_register_office_id
+ WHERE student_order_status = 0 ORDER BY student_order_date;
