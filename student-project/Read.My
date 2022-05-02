@@ -10,10 +10,10 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 61. Получение данных - ограничиваем количество записей.
+Выпуск 66. Почему нужны Unit-tests и зачем же нужен reflection.
 
 
-https://www.youtube.com/watch?v=734hE2hPQ6w&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=62
+https://www.youtube.com/watch?v=j2Wy_OkOsfQ&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=67
 
 
 терминал
@@ -65,3 +65,4 @@ git commit -m "Release XX"
 git branch -M main
 git remote add origin git@github.com:Hardy31/LearnJava.git
 git push -u origin main
+
