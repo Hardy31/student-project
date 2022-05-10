@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="student-project" />
         <module name="student-progecr-maven" />
+        <module name="student-project-maven" />
       </profile>
     </annotationProcessing>
   </component>
