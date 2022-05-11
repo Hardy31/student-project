@@ -50,13 +50,8 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
         return  resultList;
     }
 
-    private Connection getConnection() throws SQLException{
-            Connection connection = DriverManager.getConnection(
-                    Config.getProperty(Config.DB_URL),
-                    Config.getProperty(Config.DB_LOGIN),
-                    Config.getProperty(Config.DB_PASSWORD));
-
-            return connection;
+    private Connection getConnection() throws SQLException {
+        return ConnectionBuilder.getConnection();
     }
 
     @Override

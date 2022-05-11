@@ -10,10 +10,10 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 67. Первое знакомство с Reflection.
+Выпуск 68. Продолжаем unit-tests - создаем базу данных автоматически.
 
 
-https://www.youtube.com/watch?v=RoWAQG-YfnA&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=67
+https://www.youtube.com/watch?v=FeZoQlo9UW8&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=68
 
 
 терминал
@@ -63,5 +63,5 @@ git push -u origin maven
 git log --oneline
 
 git commit --amend
-
+ git push --force   !!! ОЧЕНЬ ОСТОРОЖНО!!!!
 
