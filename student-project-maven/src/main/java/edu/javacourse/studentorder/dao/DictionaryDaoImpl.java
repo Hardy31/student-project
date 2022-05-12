@@ -19,7 +19,7 @@ private  static  final String GET_STREET = "SELECT street_code AS id, street_nam
             "WHERE UPPER(street_name) LIKE UPPER(?) ";
 private  static  final String GET_PASSPORT = "SELECT p_office_id AS id, p_office_area_id AS code , p_office_name AS name FROM jc_passport_office " +
         "WHERE p_office_area_id = ? ";
-private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office_area_id AS code , r_office_name AS name FROM jc_registre_office " +
+private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office_area_id AS code , r_office_name AS name FROM jc_register_office " +
         "WHERE r_office_area_id = ? ";
 
 //    select * from jc_country_struct where area_id like '02___0000000' and area_id <> '020000000000';

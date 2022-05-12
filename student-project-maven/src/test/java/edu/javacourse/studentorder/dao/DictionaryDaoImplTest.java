@@ -1,5 +1,10 @@
 package edu.javacourse.studentorder.dao;
 
+import edu.javacourse.studentorder.domain.CountryArea;
+import edu.javacourse.studentorder.domain.PassportOffice;
+import edu.javacourse.studentorder.domain.RegisterOffice;
+import edu.javacourse.studentorder.domain.wedding.Street;
+import edu.javacourse.studentorder.exception.DaoException;
 import org.junit.*;
 
 import java.io.IOException;
@@ -28,22 +33,14 @@ public class DictionaryDaoImplTest {
         List<String> str2 = Files.readAllLines(Paths.get(url2.toURI()));
 
         String sql1 = str1.stream().collect(Collectors.joining());
+        String sql2 = str2.stream().collect(Collectors.joining());
 
         try (Connection con = ConnectionBuilder.getConnection();
              Statement stmt = con.createStatement()
             )   {
             stmt.executeUpdate(sql1);
-        }
-
-        String sql2 = str2.stream().collect(Collectors.joining());
-
-        try (Connection con = ConnectionBuilder.getConnection();
-             Statement stmt = con.createStatement()
-        )   {
             stmt.executeUpdate(sql2);
         }
-
-
     }
     @AfterClass
     public static void afterUp(){
@@ -62,18 +59,44 @@ public class DictionaryDaoImplTest {
     }
 
     @Test
-    public void  testExample1 (){
-        System.out.println("TEST 1");
+    public void  testStreet  () throws DaoException {
+
+        System.out.println("Test Street");
+        List<Street> d = new DictionaryDaoImpl().findStreets("про");
+        Assert.assertTrue(d.size() == 2);
+    }
+    @Test
+    public void  testPassportOffice  () throws DaoException {
+
+        System.out.println("Test Passport Office");
+        List<PassportOffice> po = new DictionaryDaoImpl().findPassportOffice("010020000000");
+        Assert.assertTrue(po.size() == 2);
     }
 
     @Test
-//    @Ignore
-    public void  testExample2 (){
-        System.out.println("TEST 2");
+    public void  testRegisterOffice  () throws DaoException {
+
+        System.out.println("Test Register Office");
+        List<RegisterOffice> ro = new DictionaryDaoImpl().findRegisterOffice("010010000000");
+        Assert.assertTrue(ro.size() == 2);
     }
 
     @Test
-    public void  testExample3 (){
-        System.out.println("TEST 3");
+    public void  testFindArea  () throws DaoException {
+
+        System.out.println("Test Find Area");
+
+        List<CountryArea> ca = new DictionaryDaoImpl().findArea("");
+        Assert.assertTrue(ca.size() == 2);
+
+        List<CountryArea> ca1 = new DictionaryDaoImpl().findArea("020000000000");
+        Assert.assertTrue(ca1.size() == 2);
+
+        List<CountryArea> ca2 = new DictionaryDaoImpl().findArea("020010000000");
+        Assert.assertTrue(ca2.size() == 2);
+
+        List<CountryArea> ca3 = new DictionaryDaoImpl().findArea("020020000000");
+        Assert.assertTrue(ca3.size() == 2); //Для Проверки можно поставить точку прерывания и  запустить отладку
     }
+
 }
