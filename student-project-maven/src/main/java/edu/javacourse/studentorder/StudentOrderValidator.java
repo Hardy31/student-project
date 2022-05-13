@@ -1,16 +1,19 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.dao.StudentOrserDaoImpl;
 import edu.javacourse.studentorder.domain.children.AnswerChildren;
 import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
 import edu.javacourse.studentorder.domain.student.AnswerStudent;
 import edu.javacourse.studentorder.domain.wedding.AnswerWedding;
 import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.exception.DaoException;
 import edu.javacourse.studentorder.mail.MailSender;
 import edu.javacourse.studentorder.validator.ChildrenValidator;
 import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,22 +39,27 @@ public class StudentOrderValidator
     }
 
     public void checkAll() {
-        List<StudentOrder> soList = readStudentOrders();
+        List<StudentOrder> soList = null;
+        try {
+            soList = readStudentOrders();
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
 
         for(StudentOrder so : soList) {
             checkOneOrder(so);
         }
     }
 
-    public List<StudentOrder> readStudentOrders() {
-        List<StudentOrder> soList = new LinkedList<>();
-
-        for (int c = 0; c < 5; c++) {
-            StudentOrder so = SaveStudentOrder.buildStudentOrder(c);
-            soList.add(so);
-        }
-
-        return soList;
+    public List<StudentOrder> readStudentOrders() throws DaoException {
+//        List<StudentOrder> soList = new LinkedList<>();
+//
+//        for (int c = 0; c < 5; c++) {
+//            StudentOrder so = SaveStudentOrder.buildStudentOrder(c);
+//            soList.add(so);
+//        }
+//
+        return new StudentOrserDaoImpl().getStudentOrders();
     }
 
     public void checkOneOrder(StudentOrder so) {
