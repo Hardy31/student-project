@@ -6,6 +6,8 @@ import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
 import org.junit.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +25,10 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.*;
 
 public class DictionaryDaoImplTest {
+
+    private static  final Logger logger = LoggerFactory.getLogger(DictionaryDaoImplTest.class);
+
+
     @BeforeClass
     public static void startUp() throws Exception {
         DBInit.startUp();
@@ -44,6 +51,15 @@ public class DictionaryDaoImplTest {
 
     @Test
     public void  testStreet  () throws DaoException {
+//        Быстрее
+        LocalDateTime dt1 = LocalDateTime.now();
+        LocalDateTime dt2 = LocalDateTime.now();
+        logger.info("Test {} {}" , dt1, dt2);
+
+//        не правильно!
+//        LocalDateTime dt3 = LocalDateTime.now();
+//        LocalDateTime dt4 = LocalDateTime.now();
+//        logger.info("Test2 "+ dt3 + " " + dt4);
 
         System.out.println("Test Street");
         List<Street> d = new DictionaryDaoImpl().findStreets("про");

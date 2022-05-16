@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3355d767-1dd2-4524-b2d6-fb0013178d1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/student-project-maven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/student-project-maven.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Read.My" beforeDir="false" afterPath="$PROJECT_DIR$/Read.My" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/StudentOrderValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/StudentOrderValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/SaveStudentOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/SaveStudentOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/StudentOrderValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/StudentOrderValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,22 +72,7 @@
       <recent name="edu.javacourse.studentorder.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StudentOrserDaoImplTest">
-    <configuration name="SaveStudentOrder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="edu.javacourse.studentorder.SaveStudentOrder" />
-      <module name="student-project-maven" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.javacourse.studentorder.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.DictionaryDaoImplTest.testStreet">
     <configuration name="DictionaryDaoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="student-project-maven" />
       <extension name="coverage">
@@ -101,6 +84,22 @@
       <option name="PACKAGE_NAME" value="edu.javacourse.studentorder.dao" />
       <option name="MAIN_CLASS_NAME" value="edu.javacourse.studentorder.dao.DictionaryDaoImplTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DictionaryDaoImplTest.testStreet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="student-project-maven" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.studentorder.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.studentorder.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.studentorder.dao.DictionaryDaoImplTest" />
+      <option name="METHOD_NAME" value="testStreet" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -153,19 +152,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SaveStudentOrder" />
       <item itemvalue="JUnit.DictionaryDaoImplTest" />
       <item itemvalue="JUnit.StudentOrserDaoImplTest" />
       <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrder" />
       <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrderError" />
+      <item itemvalue="JUnit.DictionaryDaoImplTest.testStreet" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DictionaryDaoImplTest.testStreet" />
+        <item itemvalue="JUnit.DictionaryDaoImplTest" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrderError" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrder" />
-        <item itemvalue="JUnit.DictionaryDaoImplTest" />
-        <item itemvalue="Application.SaveStudentOrder" />
       </list>
     </recent_temporary>
   </component>
