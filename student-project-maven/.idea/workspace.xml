@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3355d767-1dd2-4524-b2d6-fb0013178d1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_30.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_25.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/student-project-maven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/student-project-maven.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Read.My" beforeDir="false" afterPath="$PROJECT_DIR$/Read.My" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +77,7 @@
       <recent name="edu.javacourse.studentorder.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DictionaryDaoImplTest.testStreet">
+  <component name="RunManager" selected="JUnit.DictionaryDaoImplTest">
     <configuration name="DictionaryDaoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="student-project-maven" />
       <extension name="coverage">
@@ -160,8 +165,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DictionaryDaoImplTest.testStreet" />
         <item itemvalue="JUnit.DictionaryDaoImplTest" />
+        <item itemvalue="JUnit.DictionaryDaoImplTest.testStreet" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrderError" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrder" />

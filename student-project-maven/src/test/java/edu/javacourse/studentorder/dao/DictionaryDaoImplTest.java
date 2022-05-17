@@ -5,6 +5,7 @@ import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,8 @@ public class DictionaryDaoImplTest {
     private static  final Logger logger = LoggerFactory.getLogger(DictionaryDaoImplTest.class);
 
 
+
+
     @BeforeClass
     public static void startUp() throws Exception {
         DBInit.startUp();
@@ -39,6 +42,7 @@ public class DictionaryDaoImplTest {
     }
 
     @Before
+
     public void startTest(){
         System.out.println("Start Test- Befo All Tests");
     }
