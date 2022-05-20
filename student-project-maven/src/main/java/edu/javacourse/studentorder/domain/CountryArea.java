@@ -29,4 +29,12 @@ public class CountryArea {
     public void setArea_name(String area_name) {
         this.area_name = area_name;
     }
+
+    @Override
+    public String toString() {
+        return "CountryArea{" +
+                "area_id='" + area_id + '\'' +
+                ", area_name='" + area_name + '\'' +
+                '}';
+    }
 }

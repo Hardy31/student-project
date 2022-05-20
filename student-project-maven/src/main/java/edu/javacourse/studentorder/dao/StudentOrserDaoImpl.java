@@ -4,6 +4,10 @@ import edu.javacourse.studentorder.config.Config;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
+import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -15,14 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StudentOrserDaoImpl implements StudentOrderDao{
-//  старый
-//    private  static  final String SELECT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
-//            "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name," +
-//            " wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name " +
-//            "FROM jc_student_order AS so INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id " +
-//            "INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id " +
-//            "INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id " +
-//            "WHERE student_order_status = 0 ORDER BY student_order_date;";
+    private  static final Logger loggerLog4j = LoggerFactory.getLogger(StudentOrserDaoImpl.class);
 
     private  static  final String SELECT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
             "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name," +
@@ -36,17 +33,6 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
             "SELECT soc.*, ro.r_office_area_id, ro.r_office_name FROM jc_student_child AS soc " +
             "INNER JOIN jc_register_office AS ro ON ro.r_office_id = soc.c_register_office_id " +
             "WHERE soc.student_order_id IN ";
-//
-//    private  static  final String SELECT_ORDERS_FULL = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
-//            "hpo.p_office_area_id AS h_p_office_area_id , hpo.p_office_name AS h_p_office_name, " +
-//            " wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name, " +
-//            " soc.*, ro_c.r_office_area_id, ro_c.r_office_name" +
-//            "FROM jc_student_order AS so INNER JOIN jc_register_office AS ro ON ro.r_office_id = so.register_office_id " +
-//            "INNER JOIN jc_passport_office AS hpo ON hpo.p_office_id = so.h_passport_office_id " +
-//            "INNER JOIN jc_passport_office AS wpo ON wpo.p_office_id = so.w_passport_office_id " +
-//            "INNER JOIN jc_student_child AS soc ON so.student_order_id = soc.student_order_id " +
-//            "INNER JOIN jc_register_office AS ro_c ON ro_c.r_office_id = soc.c_register_office_id " +
-//            "WHERE student_order_status = ? ORDER BY student_order_date;";
 
     private  static  final String SELECT_ORDERS_FULL = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, hpo.p_office_area_id AS h_p_office_area_id , " +
             " hpo.p_office_name AS h_p_office_name, wpo.p_office_area_id AS w_p_office_area_id, wpo.p_office_name AS w_p_office_name, soc.*, " +
@@ -80,6 +66,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
     @Override
     public Long saveStudentOrder(StudentOrder so) throws DaoException {
         Long result = -1l;
+//        DOMConfigurator.configure("log4j.xml");
+        loggerLog4j.debug("SO:{}", so);
 
          try(Connection con = getConnection();
 //             System.out.println(" CON");
@@ -225,6 +213,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
             }
             rs.close();
         } catch (SQLException ex) {
+            DOMConfigurator.configure("log4j.xml");
+            loggerLog4j.error(ex.getMessage(), ex );
             throw new DaoException(ex);
         }
         return resulr;
@@ -248,6 +238,8 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
             findChild(con, resulr);
             rs.close();
         } catch (SQLException ex) {
+            DOMConfigurator.configure("log4j.xml");
+            loggerLog4j.error(ex.getMessage(), ex );
             throw new DaoException(ex);
         }
         return resulr;

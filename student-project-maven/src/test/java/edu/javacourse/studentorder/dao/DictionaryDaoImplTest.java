@@ -29,6 +29,8 @@ public class DictionaryDaoImplTest {
 
     private static  final Logger logger = LoggerFactory.getLogger(DictionaryDaoImplTest.class);
 
+//      DOMConfigurator.configure("log4j.xml");
+
 
 
 
@@ -56,9 +58,9 @@ public class DictionaryDaoImplTest {
     @Test
     public void  testStreet  () throws DaoException {
 //        Быстрее
-        LocalDateTime dt1 = LocalDateTime.now();
-        LocalDateTime dt2 = LocalDateTime.now();
-        logger.info("Test {} {}" , dt1, dt2);
+//        LocalDateTime dt1 = LocalDateTime.now();
+//        LocalDateTime dt2 = LocalDateTime.now();
+//        logger.info("Test {} {}" , dt1, dt2);
 
 //        не правильно!
 //        LocalDateTime dt3 = LocalDateTime.now();

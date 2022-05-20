@@ -27,4 +27,12 @@ public class University {
     public void setUniversityNmae(String universityNmae) {
         this.universityNmae = universityNmae;
     }
+
+    @Override
+    public String toString() {
+        return "University{" +
+                "universityId=" + universityId +
+                ", universityNmae='" + universityNmae + '\'' +
+                '}';
+    }
 }

@@ -9,14 +9,11 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 73. Логирование - подключаем log4j.
+
+Выпуск 74. Логирование - завершающие штрихи.
 
 
-https://www.youtube.com/watch?v=LzwZT7Yko04
-
-
-терминал
-шпаргалка по работе с PostgreSQL - https://sergeyem.ru/blog/66
+https://www.youtube.com/watch?v=MZ4ENt8wL5s
 
 /*
 * Запускаем  psql з под пользователя postgres:

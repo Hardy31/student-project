@@ -7,11 +7,16 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class StudentOrserDaoImplTest extends TestCase {
+
+
+
 
     @BeforeClass
     public static void startUp() throws Exception {

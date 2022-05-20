@@ -5,6 +5,7 @@ import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.dao.StudentOrserDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.wedding.Street;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +23,7 @@ public class SaveStudentOrder
 //        StudentOrder s = buildStudentOrder(25);
         StudentOrderDao dao = new StudentOrserDaoImpl();
 //        Long id = dao.saveStudentOrder(s);
-
+//        DOMConfigurator.configure("log4j.xml");
 
         List<StudentOrder> soList = dao.getStudentOrders();
         for(StudentOrder so : soList){

@@ -5,17 +5,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3355d767-1dd2-4524-b2d6-fb0013178d1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_11_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_30.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_25.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_16.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/student-project-maven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/student-project-maven.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Read.My" beforeDir="false" afterPath="$PROJECT_DIR$/Read.My" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/dao/DictionaryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/dao/DictionaryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/dao/StudentOrserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/dao/StudentOrserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Adult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Adult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Child.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Child.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/CountryArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/CountryArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/PassportOffice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/PassportOffice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/RegisterOffice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/RegisterOffice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/StudentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/StudentOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/University.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/domain/University.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/StudentOrserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/studentorder/dao/StudentOrserDaoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InsertTable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ctreateTable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/SaveStudentOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/StudentOrderValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/config/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/dao/ConnectionBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/dao/DictionaryDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/dao/DictionaryDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/dao/StudentOrderDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/dao/StudentOrserDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/Adult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/Child.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/CountryArea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/PassportOffice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/RegisterOffice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/StudentOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/StudentOrderStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/University.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/children/AnswerChildren.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/register/AnswerCityRegister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/register/AnswerCityRegisterItem$CityError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/register/AnswerCityRegisterItem$CityStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/register/AnswerCityRegisterItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/register/CityRegisterResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/student/AnswerStudent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/wedding/AnswerWedding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/domain/wedding/Street.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/exception/CityRegisterException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/exception/DaoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/exception/TransportException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/mail/MailSender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/ChildrenValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/CityRegisterValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/StudentValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/WeddingValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/register/CityRegisterChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/javacourse/studentorder/validator/register/RealCityRegisterChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/logfile_test.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/logfile_test_2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/student-project-maven-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.javacourse.studentorder.dao.DictionaryDaoImplTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/edu.javacourse.studentorder.dao.DictionaryDaoImplTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DBInit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/DictionaryDaoImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/SimpleRanerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/javacourse/studentorder/dao/StudentOrserDaoImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/log4j.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +103,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="28Zxo6i73Ajx19iTO5VJOLjX3Fc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -55,8 +124,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Log4j-KuidreS" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.11621094" />
     <property name="project.structure.side.proportion" value="0.3180306" />
   </component>
@@ -77,7 +146,7 @@
       <recent name="edu.javacourse.studentorder.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DictionaryDaoImplTest">
+  <component name="RunManager" selected="JUnit.StudentOrserDaoImplTest">
     <configuration name="DictionaryDaoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="student-project-maven" />
       <extension name="coverage">
@@ -165,9 +234,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StudentOrserDaoImplTest" />
         <item itemvalue="JUnit.DictionaryDaoImplTest" />
         <item itemvalue="JUnit.DictionaryDaoImplTest.testStreet" />
-        <item itemvalue="JUnit.StudentOrserDaoImplTest" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrderError" />
         <item itemvalue="JUnit.StudentOrserDaoImplTest.testSaveStudentOrder" />
       </list>
@@ -201,7 +270,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java</url>
-          <line>28</line>
+          <line>29</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
