@@ -10,54 +10,10 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 74. Логирование - завершающие штрихи.
 
 
-https://www.youtube.com/watch?v=MZ4ENt8wL5s
-
-/*
-* Запускаем  psql з под пользователя postgres:
-* sudo -i -u postgres
-* psql
-*/
+Выпуск 76. Git - команды для отмены.
 
 
-Запускаем  psql з под пользователя sammy:
-запросит пароль SUDO: 9959095
-sudo -u sammy psql
-
-
-
-
-\l              -  Список БД
-\du             - Показать список пользователей:
-
-\c test_db;     - Соединяемся с базой данных test_db
-\conninfo       - Получение информации о соединении
-
-\dt             - Список таблиц текущей базы данных:
-
-\q              - Выход из базы данных:
-
-
-
-
-
-
-
-echo "# Tetris" >> README.md
-git init
-git add README.md
-git commit -m "Release XX"
-git branch -M main
-git remote add origin git@github.com:Hardy31/LearnJava.git
-git push -u origin main
-
-git push -u origin maven
-
-
-git log --oneline
-
-git commit --amend
- git push --force   !!! ОЧЕНЬ ОСТОРОЖНО!!!!
+https://www.youtube.com/watch?v=A79qJbmZ738&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=76
 

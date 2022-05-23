@@ -1,0 +1,104 @@
+
+
+
+echo "# Tetris" >> README.md
+git init
+git add README.md
+git commit -m "Release XX"
+git branch -M main
+git remote add origin git@github.com:Hardy31/LearnJava.git
+git push -u origin main
+
+git push -u origin maven
+
+
+git log --oneline
+
+git commit --amend
+ git push --force   !!! ОЧЕНЬ ОСТОРОЖНО!!!!
+
+
+
+Выпуск 76. Git - команды для отмены.
+git add -A                                      - добавление в отслеживание ВСЕХ изменений
+//  path from repository root : student-project-maven/git.txt
+git reset HEAD student-project-maven/git.txt    - удаление из отслеживания файла git.txt
+git reset HEAD .                                - удаление из отслеживания ВСЕХ файлов
+git checkout student-project-maven/git.txt      - откатить ВСЕ изменения  в этом файле до состояния последнего  комита
+git checkout .                                  - откатить ВСЕ изменения  во ВСЕХ измененных файлах
+
+Для отмены комита
+git reset --hard HEAD~                           - если ничего нет после волнистой линии, значит удаляю последний комит
+git reset --hard HEAD~2                          - после волнистой линии 2, значит удаляю последние 2а  комита
+
+Для отмены если вы запушили
+git reset --hard HEAD~                          - удаляю последний комит на локальном  диске.
+        и мне выскакивает уведомление что я нахожусь на 1 уровень ниже Головы.  И для этого необходим   выполнить
+git push -f                                     10 15 - пролететь обратно.
+
+
+
+
+Выпуск 77. Совместная работа с Git - теги, бранчи, релизы.
+https://www.youtube.com/watch?v=0MNmFgNU4rY&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=77
+
+tag                                             - фиксация   какого то состояния (логического  состояния).
+                   все файлы  получают флаг этого состояния.
+                   отметка важного события
+branch                                          - Ветка
+
+
+Выпуск 78. Работа с Git - как работать с бранчами.
+https://www.youtube.com/watch?v=TG4uWO4R4Gk&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=78
+
+git branch                  - вывелет весь список и пометит активную
+git branch city             - вывперейлет на ветку city? Ели ее нет создаст но останется на старой
+git checkout city           - gерейлет на ветку city
+git checkout -b newCity     - создать и перейлет на ветку newCity
+
+для удаления  ветки ---------------
+ для начала необходимо уйти с этой ветки на другую .
+git checkout city
+git branch -D newCity       - удалит не активную ветку newCity
+
+git stash                   - сохраняет последние изменения во временное хранилище, необходимо сделать, если вы пытаетесь  уйти с редактируемого комита.
+после каких то монипуляций, возврашаемся   в нашу ветку и видим, что на  не сохранена!!!
+
+для того чтобы вернуться к  состоянию  сохраненному в stash набираем команду
+git stash pop
+git branch -v               - развернутая информация по веткам  (последний рег код и  комментарий )
+
+git push  --set -upstriam origin city       -(установить источник потока ветку city)
+
+
+
+Выпуск 79. Работа с Git - подтягиваем изменения из основной ветки.
+https://www.youtube.com/watch?v=r1-O4D_5278&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=79
+
+git fatch               -считывает из удаленного рипозитария данные и раскладывает все изменения (как в ворде сличить, сравнить)
+git fatch -v            -рассказывает какие изменения в каких ветках  и в каких не совподения
+
+для  дальнейщих действий необходимо  обновить  голову  ветки мастер на локальном  до уровня удаленного original/master
+
+git checkout master      - перешли на ветку мастер и гит подскажет, что необходимо подтянуть данные в локальный из удаленного
+                        use "git pull" to update your local branch
+
+шаг второй
+обьединение через подтягивание данных из бнавленной ветки мастера в ветку city
+для этого возвращаемся в ветку city
+
+git checkout city       - на эту ветку будем втягивать  обналения
+gir marge master        она сольет две ветки и создаст новый комит на локальном гите
+                после чего необходимо залить обнавления в удаленный репозитарий
+git pull
+
+ситуация с одновременным изменением
+
+
+Выпуск 80. Работа с Git - для чего нужен pull request.
+https://www.youtube.com/watch?v=OVL6YngpXk0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=81
+ Обьяснение ситуации  первые 7 минут.
+
+
+
+
