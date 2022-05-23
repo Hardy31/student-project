@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration debug="true"
+                     xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <!--
+                appender - описывает приемник данных
+    -->
+    <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="maxFileSize" value="10MB"/>
+        <param name="maxBackupIndex" value="2"/>
+        <!-- Полный путь к файлу-->
+        <param name="File" value="target/logfile_test.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c %x - %m%n"/>
+        </layout>
+    </appender>
+
+
+
+    <!--
+            category - пакеты в которых будет работать Logger
+    -->
+    <category name="src.main.java.edu.javacourse.studentorder">
+        <priority value="all"/>
+        <appender-ref ref="fileAppender"/>
+
+    </category>
+</log4j:configuration>
+

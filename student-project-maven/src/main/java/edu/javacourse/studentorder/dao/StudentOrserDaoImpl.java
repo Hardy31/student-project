@@ -65,6 +65,7 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
 
     @Override
     public Long saveStudentOrder(StudentOrder so) throws DaoException {
+
         Long result = -1l;
 //        DOMConfigurator.configure("log4j.xml");
         loggerLog4j.debug("SO:{}", so);
@@ -104,8 +105,6 @@ public class StudentOrserDaoImpl implements StudentOrderDao{
                  con.rollback();
                  throw ex;
              }
-
-//
 
          } catch (SQLException e){
                 throw new DaoException(e);
