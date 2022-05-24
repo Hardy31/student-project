@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3355d767-1dd2-4524-b2d6-fb0013178d1e" name="Default Changelist" comment="" />
+    <list default="true" id="3355d767-1dd2-4524-b2d6-fb0013178d1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../city-register/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
