@@ -9,12 +9,27 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 84. Создаем скрипты для таблиц ГРН.
 
-https://www.youtube.com/watch?v=oesmiv3VDyE&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=84
+Выпуск 85. Создаем классы для обработки запроса в ГРН.
+
+https://www.youtube.com/watch?v=bC33XQTYRpc&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=85
 
 
 Закончил на 4 минуте
+
+sudo -u sr psql
+
+
+
+
+
+
+
+
+
+
+
+
 
 В postgres Имя пользователя совподает с Именем БД
 поэтому создадим Пользователя CityRegister
