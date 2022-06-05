@@ -28,8 +28,8 @@ CREATE TABLE cr_address (
     district_code integer not null,
     street_code integer not null,
     building varchar(10) not null,      --строение
-    extension varchar(10) not null,     --расширение
-    apartment varchar(10) not null,     --номер квартиры
+    extension varchar(10) ,     --расширение
+    apartment varchar(10) ,     --номер квартиры
     PRIMARY KEY (address_id),
     FOREIGN KEY (district_code) REFERENCES cr_district(district_code) ON DELETE RESTRICT,
     FOREIGN KEY (street_code) REFERENCES cr_street(street_code) ON DELETE RESTRICT
@@ -82,6 +82,8 @@ VALUES (1, 'Сампсоневский проспект');
 
 INSERT INTO cr_address (district_code,street_code, building, extension, apartment)
 VALUES (1,1,'10','2', '121');
+INSERT INTO cr_address (district_code,street_code, building, extension, apartment)
+VALUES (1,1,'271', null, '4');
 
 INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
     passport_seria, passport_number, passport_date, certificate_number, certificate_date)
@@ -103,7 +105,7 @@ INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
 INSERT INTO cr_address_persone (address_id, person_id, start_date, end_date)
 VALUES(1, 1, '2014-10-12', null);
 INSERT INTO cr_address_persone (address_id, person_id, start_date, end_date)
-VALUES(1, 2, '2014-10-12', null);
+VALUES(2, 2, '2014-10-12', null);
 INSERT INTO cr_address_persone (address_id, person_id, start_date, end_date)
 VALUES(1, 3, '2016-02-05', null);
 INSERT INTO cr_address_persone (address_id, person_id, start_date, end_date)
