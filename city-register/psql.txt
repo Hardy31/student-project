@@ -1,0 +1,349 @@
+sudo -u sr psql
+
+
+
+
+
+
+
+
+
+
+
+
+
+В postgres Имя пользователя совподает с Именем БД
+поэтому создадим Пользователя CityRegister
+делать это будем из под пользователя postgres
+
+1) Запускаем  psql з под пользователя postgres:
+alex@alexPC:~$ sudo -i -u postgres
+postgres@alexPC:~$ psql
+psql (10.21 (Ubuntu 10.21-0ubuntu0.18.04.1))
+Type "help" for help.
+
+postgres=# create user CityRegister
+postgres-# ;
+CREATE ROLE
+
+
+postgres=# \password CityRegister
+Enter new password for user "cityregister":   123
+Enter it again:     123
+
+
+
+https://www.8host.com/blog/ispolzovanie-rolej-i-upravlenie-dostupom-v-postgresql/
+
+
+postgres=#
+postgres=# \du
+
+                                     List of roles
+  Role name   |                         Attributes                         | Member of
+--------------+------------------------------------------------------------+-----------
+ cityregister |                                                            | {}
+ postgres     | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ sammy        | Superuser, Create role, Create DB                          | {}
+(END)
+q
+
+
+
+
+where option can be:
+
+    | SUPERUSER | NOSUPERUSER
+    | CREATEDB | NOCREATEDB
+    | CREATEROLE | NOCREATEROLE
+    | INHERIT | NOINHERIT
+    | LOGIN | NOLOGIN
+    | REPLICATION | NOREPLICATION
+    | BYPASSRLS | NOBYPASSRLS
+    | CONNECTION LIMIT connlimit
+    | [ ENCRYPTED ] PASSWORD 'password'
+    | VALID UNTIL 'timestamp'
+    | IN ROLE role_name [, ...]
+    | IN GROUP role_name [, ...]
+    | ROLE role_name [, ...]
+    | ADMIN role_name [, ...]
+    | USER role_name [, ...]
+    | SYSID uid
+:
+
+
+postgres=# ALTER ROLE CityRegister WITH SUPERUSER
+postgres-# ;
+ALTER ROLE
+postgres=# \du
+                                     List of roles
+  Role name   |                         Attributes                         | Member of
+--------------+------------------------------------------------------------+-----------
+ cityregister | Superuser                                                  | {}
+ postgres     | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ sammy        | Superuser, Create role, Create DB                          | {}
+
+(END)
+q
+
+
+
+
+postgres=# ALTER ROLE CityRegister WITH CREATEDB;
+ALTER ROLE
+postgres=# \du
+
+
+                                     List of roles
+  Role name   |                         Attributes                         | Member of
+--------------+------------------------------------------------------------+-----------
+ cityregister | Superuser, Create DB                                       | {}
+ postgres     | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ sammy        | Superuser, Create role, Create DB                          | {}
+
+(END)
+
+
+
+psql -U CityRegister -d database_name -h 127.0.0.1 -W
+
+
+
+Запускаем  psql из под пользователя CityRegister:
+запросит пароль SUDO: 123
+sudo -u cityregister psql
+
+sudo -u postgres psql
+ALTER ROLE CityRegister WITH CREATEROLE;
+sudo -u sammy psql
+
+DROP ROLE cityregister;
+
+
+
+postgres=# CREATE USER cr;
+CREATE ROLE
+postgres=# \password cr;
+Enter new password for user "cr": 123
+Enter it again: 123
+postgres=#
+sudo -u cr createdb cr
+sudo -u sr psql
+
+ALTER ROLE cr WITH SUPERUSER;
+ALTER ROLE cr WITH CREATEROLE;
+ALTER ROLE cr WITH CREATEDB;
+create database cr
+
+sudo -u cr createdb cr;
+sudo -u cr psql
+
+alex@alexPC:~$ sudo -u cr psql;
+sudo: неизвестный пользователь: cr
+sudo: не удаётся инициализировать модуль политики
+
+
+
+
+
+
+Создание  пользователя Ubunty
+
+
+alex@alexPC:~$ sudo adduser cr
+[sudo] пароль для alex:                                             9959095
+Добавляется пользователь «cr» ...
+Добавляется новая группа «cr» (1003) ...
+Добавляется новый пользователь «cr» (1003) в группу «cr» ...
+Создаётся домашний каталог «/home/cr» ...
+Копирование файлов из «/etc/skel» ...
+Введите новый пароль UNIX:                                          12345
+Повторите ввод нового пароля UNIX:                                  12345
+passwd: пароль успешно обновлён
+Изменение информации о пользователе cr
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: City Register
+	Номер комнаты []: 1
+	Рабочий телефон []: 49-78
+	Домашний телефон []: 47241 55555
+	Другое []: Nike
+Данная информация корректна? [Y/n] y
+
+
+
+
+
+alex@alexPC:~$ sudo -u cr psql
+psql (10.21 (Ubuntu 10.21-0ubuntu0.18.04.1))
+Type "help" for help.
+
+cr=#
+
+
+
+User name   -   cr
+pasword     -   123
+
+Пишем сначало запрос 1:
+SELECT * FROM cr_address_persone
+
+А потом его расширяем - данными о персоне :
+SELECT * FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+;
+
+А потом его расширяем - Добвляем Адресс :
+SELECT * FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+;
+
+
+Поиск по ФИО :
+SELECT * FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+where
+p.sur_name = 'Васильев' and p.given_name = 'Павел'
+;
+
+
+Поиск по ФИО :
+SELECT * FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+
+
+SELECT * FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and s.street_name = 'Сампсоневский проспект'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+SELECT p.sur_name, p.given_name, p.patronymic, p.date_of_birth, s.street_name, a.building, a.extension, a.apartment
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and s.street_name = 'Сампсоневский проспект'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+SELECT temporal
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and s.street_name = 'Сампсоневский проспект'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+SELECT p.sur_name, UPPER( p.given_name), UPPER( 'Павел') ,  p.patronymic, p.date_of_birth, s.street_name, a.building, a.extension, a.apartment
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and s.street_name = 'Сампсоневский проспект'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+
+SELECT p.sur_name, UPPER( p.given_name), UPPER( 'Павел') , UPPER( 'Павел' COLLATE "en_US.UTF-8"), p.patronymic, p.date_of_birth, s.street_name, a.building, a.extension, a.apartment
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+where
+p.sur_name = 'Васильев'
+and p.given_name = 'Павел'
+and p.patronymic = 'Николаевич'
+and a.street_code = '1'
+and s.street_name = 'Сампсоневский проспект'
+and a.building = '10'
+and a.extension = '2'
+and a.apartment = '121'
+;
+
+
+
+
+SELECT p.sur_name,  p.given_name,   p.patronymic, p.date_of_birth, s.street_name, a.building, a.extension, a.apartment
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+WHERE
+UPPER(p.sur_name) = UPPER('ВасильЕв')
+and UPPER(p.given_name) = UPPER('ПавЕл')
+and UPPER(p.patronymic) = UPPER('НиколаЕвич')
+and p.date_of_birth = '1995-03-18'
+and a.street_code = '1'
+and UPPER(s.street_name) = UPPER('Сампсоневский ПРОСПЕкт')
+and UPPER(a.building) = UPPER('10')
+and UPPER(a.extension) = UPPER('2')
+and UPPER(a.apartment) = UPPER('121')
+;
+
+
+SELECT p.sur_name,  p.given_name,   p.patronymic, p.date_of_birth, s.street_name, a.building, a.extension, a.apartment
+FROM cr_address_persone AS ap
+INNER JOIN cr_person AS p ON p.person_id = ap.person_id
+INNER JOIN cr_address AS a ON a.address_id = ap.address_id
+INNER JOIN cr_street AS s ON a.street_code = s.street_code
+WHERE
+UPPER(p.sur_name) = UPPER(?)
+and UPPER(p.given_name) = UPPER(?)
+and UPPER(p.patronymic) = UPPER(?)
+and p.date_of_birth = ?
+and a.street_code = ?
+and UPPER(s.street_name) = UPPER(?)
+and UPPER(a.building) = UPPER(?)
+and UPPER(a.extension) = UPPER(?)
+and UPPER(a.apartment) = UPPER(?)
+;
