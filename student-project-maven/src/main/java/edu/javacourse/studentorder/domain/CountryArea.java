@@ -30,6 +30,7 @@ public class CountryArea {
         this.area_name = area_name;
     }
 
+
     @Override
     public String toString() {
         return "CountryArea{" +
@@ -37,4 +38,5 @@ public class CountryArea {
                 ", area_name='" + area_name + '\'' +
                 '}';
     }
+
 }

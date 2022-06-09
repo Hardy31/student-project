@@ -8,6 +8,8 @@ package edu.javacourse.studentorder.domain;
 //        FOREIGN KEY (r_office_area_id) REFERENCES jc_country_struct(area_id) ON DELETE RESTRICT
 //        );
 
+import org.apache.logging.log4j.util.StringBuilderFormattable;
+
 public class RegisterOffice
 {
     private Long officeId;
@@ -47,6 +49,7 @@ public class RegisterOffice
         this.officeName = officeName;
     }
 
+
     @Override
     public String toString() {
         return "RegisterOffice{" +
@@ -55,4 +58,5 @@ public class RegisterOffice
                 ", officeName='" + officeName + '\'' +
                 '}';
     }
+
 }

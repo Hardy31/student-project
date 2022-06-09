@@ -1,5 +1,6 @@
 package edu.javacourse.studentorder.dao;
 
+
 import edu.javacourse.studentorder.domain.CountryArea;
 import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
@@ -23,9 +24,13 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.junit.Test;
+
+
 import static org.junit.Assert.*;
 
 public class DictionaryDaoImplTest {
+
 
     private static  final Logger logger = LoggerFactory.getLogger(DictionaryDaoImplTest.class);
 
@@ -104,5 +109,6 @@ public class DictionaryDaoImplTest {
         List<CountryArea> ca3 = new DictionaryDaoImpl().findArea("020020000000");
         Assert.assertTrue(ca3.size() == 2); //Для Проверки можно поставить точку прерывания и  запустить отладку
     }
+
 
 }

@@ -21,6 +21,7 @@ public class SimpleRanerTest {
             // !!!!!!!!!!!!Обратить внимание!  в данном случае путь записывается через точки!!!
 
             String name = cl.getName();
+
             Constructor cst = cl.getConstructor();
             Object entity = cst.newInstance();
             Method[]  metods = cl.getMethods();
@@ -29,6 +30,7 @@ public class SimpleRanerTest {
                 if (ann != null){
                     m.invoke(entity);
                 }
+
             }
 
         } catch (Exception ex) {

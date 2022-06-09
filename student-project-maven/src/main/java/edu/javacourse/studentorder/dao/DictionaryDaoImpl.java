@@ -6,9 +6,11 @@ import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
 import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exception.DaoException;
+
 import org.apache.log4j.xml.DOMConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -18,14 +20,15 @@ public class DictionaryDaoImpl implements  DictionaryDao {
 //    static final String DB_URL = "jdbc:postgresql://localhost:5432/sammy";
 //    static final String USER = "sammy";
 //    static final String PASS = "12345";
+
 private  static final Logger loggerLog4j = LoggerFactory.getLogger(DictionaryDaoImpl.class);
-
-
 private  static  final String GET_STREET = "SELECT street_code AS id, street_name AS name FROM jc_street " +
             "WHERE UPPER(street_name) LIKE UPPER(?) ";
 private  static  final String GET_PASSPORT = "SELECT p_office_id AS id, p_office_area_id AS code , p_office_name AS name FROM jc_passport_office " +
         "WHERE p_office_area_id = ? ";
+
 private  static  final String GET_REGISTER = "SELECT r_office_id AS id, r_office_area_id AS code , r_office_name AS name FROM jc_register_office " +
+
         "WHERE r_office_area_id = ? ";
 
 //    select * from jc_country_struct where area_id like '02___0000000' and area_id <> '020000000000';
@@ -50,16 +53,20 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
             }
 
         } catch (SQLException e){
+
 //            DOMConfigurator.configure("log4j.xml");
             loggerLog4j.error(e.getMessage(), e );
+
             throw new DaoException(e);
 
         }
         return  resultList;
     }
 
+
     private Connection getConnection() throws SQLException {
         return ConnectionBuilder.getConnection();
+
     }
 
     @Override
@@ -86,10 +93,12 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
                         result.getString("name"));
             }
 
+
         } catch (SQLException ex){
 //            DOMConfigurator.configure("log4j.xml");
             loggerLog4j.error(ex.getMessage(), ex );
             throw new DaoException(ex);
+
 
         }
         return  resultList;
@@ -121,8 +130,10 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
             }
 
         } catch (SQLException e){
+
 //            DOMConfigurator.configure("log4j.xml");
             loggerLog4j.error(e.getMessage(), e );
+
             throw new DaoException(e);
 
         }
@@ -159,8 +170,10 @@ private  static  final String GET_AREA = "SELECT * FROM jc_country_struct " +
             }
 
         } catch (SQLException e){
+
 //            DOMConfigurator.configure("log4j.xml");
             loggerLog4j.error(e.getMessage(), e );
+
             throw new DaoException(e);
 
         }

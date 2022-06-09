@@ -28,6 +28,7 @@ public class University {
         this.universityNmae = universityNmae;
     }
 
+
     @Override
     public String toString() {
         return "University{" +
@@ -35,4 +36,5 @@ public class University {
                 ", universityNmae='" + universityNmae + '\'' +
                 '}';
     }
+
 }
