@@ -47,7 +47,7 @@ class  SimpleClient extends Thread {
     public void run() {
         try {
             LocalDateTime start = LocalDateTime.now();
-            System.out.println( "Started : " + start);
+            System.out.println( "SimpleClient "+num+" Отправил запрос : " + start);
             Socket socket = new Socket("127.0.0.1", 25225);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -60,14 +60,14 @@ class  SimpleClient extends Thread {
 
 
             String ansver = br.readLine();
-            System.out.println("Client got ansver : " + ansver);
+            System.out.println("Ответ Сервера : " + ansver);
 
             br.close();
             bw.close();
             socket.close();
             LocalDateTime finish = LocalDateTime.now();
 
-            System.out.println( "Finished Alex " + this.num  + "  " + finish  );
+            System.out.println( "SimpleClient "+num+"Finished "  + finish  );
         } catch (IOException ioE) {
             ioE.printStackTrace(System.out);
         }
