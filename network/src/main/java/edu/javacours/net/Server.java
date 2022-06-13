@@ -8,36 +8,14 @@ public class Server {
     public static void main(String[] args) throws IOException {
         Integer port = 25225;
         ServerSocket serverSocket = new ServerSocket(port);
-        System.out.println( "Server is started1");
+        System.out.println( "Server is started");
         while (true){
             Socket client = serverSocket.accept();
             SimpeleServer  SimpeleServer = new SimpeleServer(client);
             SimpeleServer.start();
         }
     }
-//    //handler переводится как обработчик
-//    private static void handleRequest(Socket client) throws IOException {
-//        System.out.println( "ServerSocket connect Client");
-//        BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
-//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-//
-//        StringBuilder sb = new StringBuilder("Hello, ");
-//        String userName = br.readLine();
-//        System.out.println( "ServerSocket read : " + userName);
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace(System.out);
-//        }
-//        sb.append(userName);
-//        bw.write(sb.toString());
-//        bw.newLine();
-//        bw.flush();
-//        br.close();
-//        bw.close();
-//        client.close();
-//        System.out.println( "ServerSocket close");
-//    }
+
 }
 
 class SimpeleServer extends Thread{
@@ -57,16 +35,28 @@ class SimpeleServer extends Thread{
             BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
-            StringBuilder sb = new StringBuilder("Hello, ");
-            String userName = br.readLine();
-            System.out.println( "ServerSocket read : " + userName);
+
+
+
+
+            String incomingMessage = br.readLine();
+            System.out.println( "ServerSocket read : " + incomingMessage);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace(System.out);
             }
-            sb.append(userName);
-            bw.write(sb.toString());
+
+            String[] words = incomingMessage.split("\\s+");
+            String command = words[0];
+            String userName = words[1] + " " + words[2];
+//            sb.append(userName);
+            System.out.println( "command "+command);
+            System.out.println( "userName "+userName);
+
+
+
+            bw.write(userName.toString());
             bw.newLine();
             bw.flush();
             br.close();
