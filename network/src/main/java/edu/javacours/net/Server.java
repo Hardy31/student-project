@@ -54,9 +54,9 @@ class SimpeleServer extends Thread{
             System.out.println( "command "+command);
             System.out.println( "userName "+userName);
 
+            String response = buildResponse(command, userName);
 
-
-            bw.write(userName.toString());
+            bw.write(response);
             bw.newLine();
             bw.flush();
             br.close();
@@ -65,6 +65,16 @@ class SimpeleServer extends Thread{
             System.out.println( "ServerSocket "+userName+"close");
         } catch ( IOException ioE) {
             ioE.printStackTrace(System.out);
+        }
+    }
+
+    private String buildResponse(String command, String userName){
+        switch (command){
+            case "HELLO" :                 return "HELLO "+ userName;
+            case "MORNING" :                 return "Good morning "+ userName;
+            case "DAY" :                 return "Good day  "+ userName;
+            case "EVENIHG" :                 return "Good evening "+ userName;
+            default:                    return "Hi "+ userName;
         }
     }
 

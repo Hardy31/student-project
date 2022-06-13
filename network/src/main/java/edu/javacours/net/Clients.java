@@ -40,7 +40,7 @@ class  SimpleClient extends Thread {
             bw.write(name);
             bw.newLine();
             bw.flush();
-            System.out.println( "SimpleClient "+cmdNumber+" отправил запрос в " + start);
+//            System.out.println( "SimpleClient "+cmdNumber+" отправил запрос в " + start);
 
 
             String ansver = br.readLine();
@@ -51,7 +51,7 @@ class  SimpleClient extends Thread {
             socket.close();
             LocalDateTime finish = LocalDateTime.now();
 
-            System.out.println( "SimpleClient "+cmdNumber+" получил ответ от Сервера в "  + finish  );
+//            System.out.println( "SimpleClient "+cmdNumber+" получил ответ от Сервера в "  + finish  );
         } catch (IOException ioE) {
             ioE.printStackTrace(System.out);
         }
