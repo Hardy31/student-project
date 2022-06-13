@@ -2,6 +2,7 @@ package edu.javacours.net;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDateTime;
 
 public class Clients {
     public static void main(String[] args) throws IOException {
@@ -45,6 +46,8 @@ class  SimpleClient extends Thread {
     @Override
     public void run() {
         try {
+            LocalDateTime start = LocalDateTime.now();
+            System.out.println( "Started : " + start);
             Socket socket = new Socket("127.0.0.1", 25225);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -62,6 +65,9 @@ class  SimpleClient extends Thread {
             br.close();
             bw.close();
             socket.close();
+            LocalDateTime finish = LocalDateTime.now();
+
+            System.out.println( "Finished Alex " + this.num  + "  " + finish  );
         } catch (IOException ioE) {
             ioE.printStackTrace(System.out);
         }

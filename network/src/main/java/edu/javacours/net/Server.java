@@ -23,6 +23,11 @@ public class Server {
         StringBuilder sb = new StringBuilder("Hello, ");
         String userName = br.readLine();
         System.out.println( "ServerSocket read : " + userName);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace(System.out);
+        }
         sb.append(userName);
         bw.write(sb.toString());
         bw.newLine();
