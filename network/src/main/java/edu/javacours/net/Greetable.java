@@ -1,4 +1,4 @@
-package main.java.edu.javacours.net;
+package edu.javacours.net;
 
 public abstract class Greetable {
     public abstract String buildResponse (String userName);
