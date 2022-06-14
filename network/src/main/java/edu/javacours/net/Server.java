@@ -4,10 +4,12 @@
         import edu.javacours.greet.MorningGreet;
 
         import java.io.*;
+        import java.lang.reflect.InvocationTargetException;
         import java.net.ServerSocket;
         import java.net.Socket;
         import java.util.HashMap;
         import java.util.Map;
+        import java.util.Properties;
 
         public class Server {
     public static void main(String[] args) throws IOException {
@@ -32,37 +34,40 @@
             private static Map<String, Greetable> loadHandlers() {
                 Map<String,Greetable> result = new HashMap<>();
 
-                result.put("MORNING", new MorningGreet());
-                result.put("EVENIHG", new EveningGreet());
-                
+//                result.put("MORNING", new MorningGreet());
+//                result.put("EVENIHG", new EveningGreet());
+
 
                 System.out.println( "Server.loadHandlers  is started");
-//                try(InputStream is = Server.class.getClassLoader().getResourceAsStream("main/java/resources/server.properties");){
-//                    Properties properties = new Properties();
-//
+
+                try(InputStream is = Server.class.getClassLoader().getResourceAsStream("server.properties");){
+                    Properties properties = new Properties();
+                    properties.load(is);
+
 //                    System.out.println( properties.getProperty("EVENIHG"));
-//                    properties.load(is);
-//                    for (Object comand: properties.keySet()) {
-//                        String key = comand.toString();
-//                        String className = properties.getProperty(key);
-//                        Class<Greetable> cl = (Class<Greetable>) Class.forName(className);
-//                        Greetable handler = cl.getConstructor().newInstance() ;
-//                        result.put(key, handler);
-//                    }
-//                }catch (IOException ex){
-//                    ex.printStackTrace();
-//                    throw  new RuntimeException(ex);
-//                } catch (ClassNotFoundException e) {
-//                    e.printStackTrace();
-//                } catch (NoSuchMethodException e) {
-//                    e.printStackTrace();
-//                } catch (IllegalAccessException e) {
-//                    e.printStackTrace();
-//                } catch (InstantiationException e) {
-//                    e.printStackTrace();
-//                } catch (InvocationTargetException e) {
-//                    e.printStackTrace();
-//                }
+
+                    for (Object comand: properties.keySet()) {
+                        String key = comand.toString();
+                        String className = properties.getProperty(key);
+                        Class<Greetable> cl = (Class<Greetable>) Class.forName(className);
+                        Greetable handler = cl.getConstructor().newInstance() ;
+                        result.put(key, handler);
+                        System.out.println( "Загружен " +key+" "+properties.getProperty(key));
+                    }
+                }catch (IOException ex){
+                    ex.printStackTrace();
+                    throw  new RuntimeException(ex);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 return result;
 
