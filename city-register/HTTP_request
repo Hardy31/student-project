@@ -1,0 +1,19 @@
+GET /sitemap.xml HTTP/1.1
+Host:java-course.ru
+Content-Tipe:
+Content-Length:
+User-Agent:
+
+
+// Не забываем что два пробела обозначает конец запроса.
+
+
+Запрос Post будет выглядить так
+
+POST /sitemap.xml HTTP/1.1
+Host:java-course.ru
+Content-Tipe:
+Content-Length:4
+User-Agent:
+
+BODY

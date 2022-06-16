@@ -10,23 +10,36 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 96. HTTP как основной язык взаимодействия в Интернет.
 
-https://www.youtube.com/watch?v=T0v5KQB7Nx4&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=97
+Выпуск 97. Проект для установки на веб-сервер Tomcat.
+
+https://www.youtube.com/watch?v=nQwdKVx6i6A&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=97
+
+
+1 Собрать проект в нужном формате
+2 Конфигрурация
+3 Базоывый класс
+
+
+JAR
+WAR - разберем Веб Архив
+
+EAR
+
+меняем конфигурацтю MAVEN
 
 
 
-Ссылка изменилась
-https://developer.mozilla.org/ru/docs/Web/HTTP
-Методы HTTP-запроса
-Различные операции, которые выполняются с HTTP:
-GET
-POST
-OPTIONS
-DELETE
-TRACE
-PATCH
-другие
+Мой томкат находится здесь
+/opt/tomcat/webapps/city-register
+
+для отображения в хроме набираем
+http://localhost:8080/city-register/
+
+
+
+Обобщение начинается с 13 минуты
+
 
 
 
