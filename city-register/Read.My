@@ -10,9 +10,23 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 88. Сетевое взаимодействие - базовые протоколы IP, TCP, UDP.
+Выпуск 96. HTTP как основной язык взаимодействия в Интернет.
 
-https://www.youtube.com/watch?v=eGodWx-Jnmo&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=88
+https://www.youtube.com/watch?v=T0v5KQB7Nx4&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=97
+
+
+
+Ссылка изменилась
+https://developer.mozilla.org/ru/docs/Web/HTTP
+Методы HTTP-запроса
+Различные операции, которые выполняются с HTTP:
+GET
+POST
+OPTIONS
+DELETE
+TRACE
+PATCH
+другие
 
 
 
