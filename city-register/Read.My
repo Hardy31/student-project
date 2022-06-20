@@ -8,21 +8,9 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 98. Очень простая обработка HTTP-запроса в приложении.
+Выпуск 99. Отправка параметров из браузера и проверка персоны.
 
-https://www.youtube.com/watch?v=KWc2Y77j5sc&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=98
-
-
-
-
-Установка и  настройка по вот этой ссылке
-
-
-https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804-ru#2-tomcat
-
-настройка шаг 6
-sudo ufw allow 8080
-
+https://www.youtube.com/watch?v=Xmv4Xhg0ddA&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=99
 
 
 
@@ -36,13 +24,9 @@ http://localhost:8080/city-register/
 
 
 
-Обобщение начинается с 13 минуты
-
-Для сборки необходимо  в мавене запустить clean + package
-
-
 ВАЖНО!
 ЗАРАБОТАЛО ТОЛЬКО ПОСЛЕ ПЕРЕЗАГРУЗКИ!
+
 
 
 

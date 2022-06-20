@@ -20,6 +20,17 @@ public class PersonCheckDao {
             "and a.street_code = ?\n" +
             "and UPPER(a.building) = UPPER(?)\n"
             ;
+
+    public PersonCheckDao(){
+        try {
+            Class.forName("org.postgresql.Driver");
+        }catch (Exception e){
+
+        }
+    }
+
+
+
     public PersonResponse checkPerson(PersonRequest request) throws  PersonCheckException {
         PersonResponse response = new PersonResponse();
 
