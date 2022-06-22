@@ -19,6 +19,8 @@ package edu.javacours.city.web;
 //import javax.servlet.http.HttpServletResponse;
 //import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import edu.javacours.city.dao.PersonCheckDao;
 import edu.javacours.city.domain.PersonRequest;
 import edu.javacours.city.domain.PersonResponse;
@@ -26,13 +28,32 @@ import edu.javacours.city.exception.PersonCheckException;
 
 import java.io.*;
 import java.time.LocalDate;
+//import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet(name ="CheckPersonServlet", urlPatterns = {"/checkPerson"})
-//@WebServlet("/checkPerson")
+//@WebServlet(name ="CheckPersonServlet", urlPatterns = {"/checkPerson"}, loadOnStartup = 1)
+@WebServlet(name ="CheckPersonServlet", urlPatterns = {"/checkPerson"} )
 public class CheckPersonServlet extends HttpServlet {
+
+    @Override
+    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+        super.service(req, res);
+        logger.info("SERVER - service method call, regues param :  " + req.getParameter("surname"));
+    }
+
+    private PersonCheckDao dao;
+    private static  final Logger logger = LoggerFactory.getLogger(CheckPersonServlet.class);
+
+
+    @Override
+    public void init() throws ServletException {
+//        super.init();
+        logger.info("SERVER is created");
+        dao = new PersonCheckDao();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doGet(req, resp);
@@ -62,7 +83,7 @@ public class CheckPersonServlet extends HttpServlet {
 //        PrintWriter out = resp.getWriter();
 
         try {
-            PersonCheckDao dao = new PersonCheckDao();
+
             PersonResponse ps = dao.checkPerson(pr);
 
             if (ps.isRegistered()){
