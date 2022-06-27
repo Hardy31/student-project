@@ -3,10 +3,44 @@ package edu.javacours.city.dao;
 import edu.javacours.city.domain.PersonRequest;
 import edu.javacours.city.domain.PersonResponse;
 import edu.javacours.city.exception.PersonCheckException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-public class PersonCheckDao {
+public class PersonCheckDao implements ConnectionBuilder {
+    private static  final Logger logger = LoggerFactory.getLogger(PersonCheckDao.class);
+
+
+    private ConnectionBuilder connectionBuilder;
+
+    public void setConnectionBuilder(ConnectionBuilder connectionBuilder) {
+        this.connectionBuilder = connectionBuilder;
+    }
+
+    public Connection getConnection() throws SQLException {
+
+//        Должно быть так !
+//        return connectionBuilder.getConnection();
+
+//        ЗАХАРДКОДИЛ
+        try {
+            Class.forName("org.postgresql.Driver");
+        }catch (ClassNotFoundException e){
+
+        }
+        return  DriverManager.getConnection("jdbc:postgresql://localhost:5432/cr", "cr", "123");
+
+    }
+
+    //    public PersonCheckDao(){
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        }catch (Exception e){
+//
+//        }
+//    }
+
     private  static  final String SQL_REQUEST = "SELECT temporal FROM cr_address_persone AS ap\n" +
             "INNER JOIN cr_person AS p ON p.person_id = ap.person_id\n" +
             "INNER JOIN cr_address AS a ON a.address_id = ap.address_id\n" +
@@ -20,14 +54,6 @@ public class PersonCheckDao {
             "and a.street_code = ?\n" +
             "and UPPER(a.building) = UPPER(?)\n"
             ;
-
-    public PersonCheckDao(){
-        try {
-            Class.forName("org.postgresql.Driver");
-        }catch (Exception e){
-
-        }
-    }
 
 
 
@@ -49,9 +75,11 @@ public class PersonCheckDao {
 //        System.out.println(sql);
 
         try (Connection con = getConnection();
+//             logger.info(" PullConnectionBuilder. PoolConnectionBuilder() строка 23 - init Context" );
              PreparedStatement stmtm = con.prepareStatement(sql);
-        ) {
 
+        ) {
+//            logger.info("++ SQL +++ " + sql);
 //            System.out.println("Соединение с БД");
             int count = 1;
             stmtm.setString(count++, request.getSurName());
@@ -82,9 +110,6 @@ public class PersonCheckDao {
         return  response;
     }
 
-    private  Connection getConnection() throws SQLException{
 
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cr", "cr", "123");
 
-    }
 }

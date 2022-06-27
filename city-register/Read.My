@@ -8,10 +8,10 @@ https://github.com/java-webinars/java-project/
 
 
 
-Выпуск 100. Жизненный цикл сервлета - нужное знание.
+Выпуск 101. Пул подсоединений к базе данных.
 
-https://www.youtube.com/watch?v=U08oldljtCc&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=100
 
+https://www.youtube.com/watch?v=_4OxQz2jkx8&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=101
 
 
 
@@ -27,6 +27,22 @@ http://localhost:8080/city-register/
 ВАЖНО!
 ЗАРАБОТАЛО ТОЛЬКО ПОСЛЕ ПЕРЕЗАГРУЗКИ!
 
+
+Важно!!
+Не смог подключить  PoolConnectionBuilder
+ для запуска захардкодил  метод getConnection()
+                     public Connection getConnection() throws SQLException {
+                 //        Должно быть так !
+                 //        return connectionBuilder.getConnection();
+
+                 //        ЗАХАРДКОДИЛ
+                         try {
+                             Class.forName("org.postgresql.Driver");
+                         }catch (ClassNotFoundException e){
+
+                         }
+                         return  DriverManager.getConnection("jdbc:postgresql://localhost:5432/cr", "cr", "123");
+                     }
 
 
 
