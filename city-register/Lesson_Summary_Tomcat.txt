@@ -1,0 +1,97 @@
+
+
+
+Выпуск 97. Проект для установки на веб-сервер Tomcat.
+https://www.youtube.com/watch?v=nQwdKVx6i6A&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=97
+
+2-13 Сбор проета в нужном формате
+    jar     -  Java архив
+    WAR     - Веб архив
+    EAR     - Интерпрайс архив
+
+ 3-00
+ настройка POM.XML
+ 10 строка добавили
+  <packaging>war</packaging>        способ упаковки Wab архив
+
+Но при попытке собрать проект  выдает ошибку :
+Failed to execute goal org.apache.maven.plugins:maven-war-plugin:2.2:war
+(default-war) on project city-register: Error assembling WAR:
+webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode)
+
+Не удалось выполнить сборку плагина  org.apache.maven.plugins:maven-war-plugin:2.2:war
+(по умолчанию-WAR) в проекте City-Register: Ошибка сборки WAR:
+требуется атрибут webxml (или уже существующий WEB-INF/web.xml при выполнении в режиме обновления)
+
+
+
+WEB-INF/web.xml специализированный файд отвечающий за сборку конфигурации  сервлета ....
+ есть два пути.
+
+  пока не будем  его создавать а используем  встроенную возможность встроенную в  maven-war-plugin
+   Возможность игнорировать   файл WEB-INF/web.xml и настройку осуществлять через  ЧТО????
+
+
+D POM.xml добавляем  строки с 12 по 31
+
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <source>8</source>
+                                <target>8</target>
+                            </configuration>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <configuration>
+                                <failOnMissingWebXml>false</failOnMissingWebXml>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+
+
+И сборка прошла без ошибки
+
+
+
+Далее создаем папку src/main/webapp и в нее размещаем index.html
+ Собираем проект и файл с именем city-register-1.0.war  перемешаем в
+ /opt/tomcat/webapps
+ он там сам распаковывается и в браузере мы в строке набираем
+ http://localhost:8080/city-register-1.0/
+
+ И любуемся в браузере на нашу страничку.
+
+ Для ТомКат папка /opt/tomcat/webapps/city-register=1.0/ является
+ Content PATH
+
+ 13-45
+ если есть файл WEB.xml то в файле pom.xml не нужны строки с 23 по  29
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <configuration>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                        </configuration>
+                    </plugin>
+
+
+
+
+
+
+
+Настройка по этой статье:
+https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804-ru#2-tomcat
+
+настройка шаг 6
+sudo ufw allow 8080
+
+Для сборки необходимо  в мавене запустить clean + package
+

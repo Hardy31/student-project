@@ -1,0 +1,71 @@
+Система Контроля Версий
+
+Выпуск 75. Знакомимся с Git.
+https://www.youtube.com/watch?v=EPDckJ-22A8&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=75
+
+Установка Git
+Репозитарий этого проекта находится здесь:
+cd Hardy/LearnJava/
+
+git status
+
+Файл   .gitignore
+Как правило он содержит  следующие папки:
+target          - Собранный проект Maven
+out             - Создает Idea.
+.idea/          - Файлы настройки Jdea
+.DS_Store       - Файл МАС ОС
+
+
+git add   добавляет файл в список для отслеживания
+git add .  или git add ~A  (all)
+
+git commit -m "Название созданного Комита"
+
+git log
+
+Для удаления файла из отслеживания
+ Случайно набрали git add bedFile
+ для этого
+ git reset HEAD bedFile
+ или
+ git reset HEAD .        Удалит Все ранее добавленные файлы
+
+
+
+
+
+
+
+Выпуск 76. Git - команды для отмены.
+https://www.youtube.com/watch?v=A79qJbmZ738&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=76
+
+git reset HEAD bedFile      Удалили из отслеживания bedFile который ранее добавили через git add .
+
+git ceckout bedFile       ОТКАТИТ ВСЕ ИЗМЕНЕНИЯ ДО ПЕРВОНОЧАЛЬНОГО СОСТОЯНИЯ
+
+Ситуация  когда мы закомитили изменения. и поняли что этот комит надо отменить.
+Жесткое удаление =
+git reset --hard HEAD~  (Удалит Последний комит)
+git reset --hard HEAD~2  (Удалит 2а последних комита)
+
+Ситуация Когда мы запушили  комит и тольео его мы хотим удалить.
+для этого выполняем две команды :
+git reset --hard HEAD~  (Удалит Последний комит локально)
+git push -f             (Удалит Последний комит на удаленном сервере)
+И голова автоматически подтянется  к последнему комиту.
+
+
+
+
+
+
+Выпуск 77. Совместная работа с Git - теги, бранчи, релизы.
+https://www.youtube.com/watch?v=0MNmFgNU4rY&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=77
+
+
+
+
+
+
+
