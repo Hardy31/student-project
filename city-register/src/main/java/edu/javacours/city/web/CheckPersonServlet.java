@@ -19,7 +19,13 @@ package edu.javacours.city.web;
 //import javax.servlet.http.HttpServletResponse;
 //import java.io.IOException;
 
+import edu.javacours.city.dao.PersonCheckDao;
+import edu.javacours.city.domain.PersonRequest;
+import edu.javacours.city.domain.PersonResponse;
+import edu.javacours.city.exception.PersonCheckException;
+
 import java.io.*;
+import java.time.LocalDate;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -29,29 +35,42 @@ import javax.servlet.http.*;
 public class CheckPersonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doGet(req, resp);
 
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Hello World!</title>");
+        req.setCharacterEncoding("UTF-8");
+        String surname = req.getParameter("surname");
 
-        out.println("<a  href=\"checkPerson\">CheckPerson</a>");
-        out.println("<a  href=\"\">Index</a>");
-        out.println("<a  href=\"info\">INFO</a>");
+        System.out.println(surname);
 
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Hello World!</h1>");
-        out.println("</body>");
-        out.println("</html>");
+        PersonRequest pr = new PersonRequest();
+        pr.setSurName(surname);
+        pr.setGivenName("Павел");
+        pr.setPatronymic("Николаевич");
+        pr.setDateOfBird(LocalDate.of(1995, 3, 18));
+        pr.setStreetCode(1);
+        pr.setBuilding("10");
+        pr.setExtension("2");
+        pr.setApartment("121");
+
+
+        try {
+            PersonCheckDao dao = new PersonCheckDao();
+            PersonResponse ps = dao.checkPerson(pr);
+
+            if (ps.isRegistered()){
+
+                resp.getWriter().write("Registered");
+
+            } else {
+
+                resp.getWriter().write("Not registered");
+            }
+
+        } catch (PersonCheckException e) {
+            e.printStackTrace();
+        }
+
     }
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletRequestvletResponse resp) throws ServletException, IOException {
-////        super.doGet(req, resp);
-//        resp.getWriter().println("Get CheckPerson - called");
-//    }
+
 
 
 }

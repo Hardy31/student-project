@@ -134,3 +134,54 @@ https://www.youtube.com/watch?v=KWc2Y77j5sc&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
 
    В качестве самостоятельной работы создал еще один класс RequestInfo и срабатывающий на url info для метода doGet
      И в файл Index.html повесил сылки   на эти два урла
+
+
+
+Выпуск 99. Отправка параметров из браузера и проверка персоны.
+
+https://www.youtube.com/watch?v=Xmv4Xhg0ddA&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=99
+В Index.html создаем форму для ввода фамилии
+                        <div class="heading-holder">
+                            <h1>FORM</h1>
+                            <form action="checkPerson" method="get">
+                                Surname: <input type="text" name="surname"/>
+                                <input type="submit" value="GO">
+                            </form>
+
+                        </div>
+
+Теперь учим CheckPersonServlet метод doGet правильно  прочитать запрос
+и в зависимости  от полученных данных  подготовить  ответ  сушествует ли в базе данных такой человек или нетЖ
+            protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+                    req.setCharacterEncoding("UTF-8");
+                    String surname = req.getParameter("surname");
+
+                    System.out.println(surname);
+
+                    PersonRequest pr = new PersonRequest();
+                    pr.setSurName(surname);
+                    pr.setGivenName("Павел");
+                    pr.setPatronymic("Николаевич");
+                    pr.setDateOfBird(LocalDate.of(1995, 3, 18));
+                    pr.setStreetCode(1);
+                    pr.setBuilding("10");
+                    pr.setExtension("2");
+                    pr.setApartment("121");
+
+                    try {
+                        PersonCheckDao dao = new PersonCheckDao();
+                        PersonResponse ps = dao.checkPerson(pr);
+
+                        if (ps.isRegistered()){
+                            resp.getWriter().write("Registered");
+                        } else {
+                            resp.getWriter().write("Not registered");
+                        }
+
+                    } catch (PersonCheckException e) {
+                        e.printStackTrace();
+                    }
+
+
+
