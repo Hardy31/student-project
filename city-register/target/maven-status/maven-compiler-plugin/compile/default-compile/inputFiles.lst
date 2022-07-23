@@ -1,5 +1,7 @@
 /home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/exception/PersonCheckException.java
 /home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/domain/PersonResponse.java
 /home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/domain/PersonRequest.java
+/home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/web/CheckPersonServlet.java
 /home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/dao/PersonCheckDao.java
 /home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/web/CheckPersonService.java
+/home/alex/Hardy/LearnJava/city-register/src/main/java/edu/javacours/city/web/RequestInfo.java

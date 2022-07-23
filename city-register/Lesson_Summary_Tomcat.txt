@@ -95,3 +95,42 @@ sudo ufw allow 8080
 
 Для сборки необходимо  в мавене запустить clean + package
 
+
+
+Выпуск 98. Очень простая обработка HTTP-запроса в приложении.
+https://www.youtube.com/watch?v=KWc2Y77j5sc&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=98
+
+добавляем зависимость
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+Обучаем  TomCat вызывать класс  CheckPersonServlet по определенным правилам
+    Можно 2мя правилами:
+    1) через аннатации
+    2) через файл  web.xml
+
+ Создаем класс CheckPersonServlet
+ для этого класса пише аннатации для томката
+        @WebServlet(name ="CheckPersonServlet", urlPatterns = {"/checkPerson"}) тем самым мы
+        говорим томкату что при   отправке запроса  на адрес /checkPerson вызывается класс  CheckPersonServlet
+        и в зависимости от типа запроса  срабатывает определенный метод.
+  в методе doGet пишем обработчик на формирование респонта (ответа )
+
+  resp.setContentType("text/html");
+          PrintWriter out = resp.getWriter();
+          out.println("<html>");
+          out.println("<head>");
+          out.println("<title>Hello World!</title>");
+          out.println("</head>");
+          out.println("<body>");
+          out.println("<h1>Hello World!</h1>");
+          out.println("</body>");
+          out.println("</html>");
+
+
+   В качестве самостоятельной работы создал еще один класс RequestInfo и срабатывающий на url info для метода doGet
+     И в файл Index.html повесил сылки   на эти два урла
