@@ -1,6 +1,7 @@
 package edu.javacours.city.web;
 
 import edu.javacours.city.dao.PersonCheckDao;
+import edu.javacours.city.dao.PoolConnectionBuilder;
 import edu.javacours.city.domain.PersonRequest;
 import edu.javacours.city.domain.PersonResponse;
 import edu.javacours.city.exception.PersonCheckException;
@@ -31,6 +32,7 @@ public class CheckPersonServlet extends HttpServlet {
     public void init() throws ServletException {
         logger.info("SERVER is created");
         dao = new PersonCheckDao();
+        dao.setConnectionBuilder(new PoolConnectionBuilder());
     }
 
 
