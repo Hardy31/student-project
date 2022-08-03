@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 @Path("/check")
 public class CheckPersonService {
@@ -16,9 +18,17 @@ public class CheckPersonService {
 //        logger.info("CheckPersonService -  IMPLEMENT!!!!!!!");
 //    }
 
+//    @GET
+//    public  String checkPerson(){
+//        return "Simpl String";
+//    }
+
     @GET
-    public  String checkPerson(){
-//        logger.info("CheckPersonService -  method checkPerson!!!!!!!!!");
-        return "Simpl String";
+    @Path("/{id}")
+    public  String checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
+        return "Simpl QueryParam" + simpleId + " : " + simpleName;
     }
 }
+
+//       localhost:8080/city-register-1.0/rest/check/101?name=value
+//Результат будет : Simpl QueryParam101 : value

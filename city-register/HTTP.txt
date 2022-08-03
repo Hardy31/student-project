@@ -2,6 +2,10 @@
 Выпуск 102. Передача параметров по HTTP - все не так просто.
 https://www.youtube.com/watch?v=6xFkCVuGhTE&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=102
 
+
+
+
+
 Выпуск 103. Что такое ReST - основы и первая программа.
 https://www.youtube.com/watch?v=3nuu7-aBTco&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=103
 REST (от англ. Representational State Transfer — «передача репрезентативного состояния» или «передача „самоописываемого“ состояния») —
@@ -45,4 +49,62 @@ Resourse metod              - Выполняет функционал  мето�
 
 Конфигурация сервлета принимающего ВСЕ запросы
 добавляем web.xml
+    <servlet>
+        <servlet-name>JerseyServlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>edu.javacours.city.web</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.scanning.recursive</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JerseyServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 
+    И создаем класс CheckPersonService
+            package edu.javacours.city.web;
+
+            import javax.ws.rs.GET;
+            import javax.ws.rs.Path;
+
+            @Path("/check")
+            public class CheckPersonService {
+                @GET
+                public  String checkPerson(){
+                    return "Simpl String";
+                }
+              }
+
+Переходим в браузер и набираем : http://localhost:8080/city-register-1.0/rest/check
+
+
+
+Выпуск 104. ReST - входные и выходные параметры.
+https://www.youtube.com/watch?v=53WOKrujc6c&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=104
+
+http://localhost:8080/city-register-1.0/rest/check/101/simple ?name1=value1$name2=valume2
+path параметры
+параметры Имя - значение
+
+
+конструктор  на :
+
+    @GET
+    @Path("/{id}")
+    public  String checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
+        return "Simpl QueryParam" + simpleId + " : " + simpleName;
+    }
+
+
+
+
+И при наборе в браузере :
+      localhost:8080/city-register-1.0/rest/check/101?name=value
+
+Получаем :
+Результат будет : Simpl QueryParam101 : value
