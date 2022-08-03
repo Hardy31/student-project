@@ -6,3 +6,4 @@ edu/javacours/city/dao/ConnectionBuilder.class
 edu/javacours/city/web/CheckPersonServlet.class
 edu/javacours/city/domain/PersonResponse.class
 edu/javacours/city/dao/PersonCheckDao.class
+edu/javacours/city/web/CheckPersonService.class
