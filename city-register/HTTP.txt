@@ -151,3 +151,42 @@ CheckPersonService
 http://localhost:8080/city-register-1.0/rest/check/108?name=Dfcbkmtd
  Получаем:
  {"registered":false,"temporal":false}
+
+
+Выпуск 105. ReST - параметры со сложными полями.
+https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=105
+
+в Файле public class CheckPersonService {
+заменили :
+            @GET
+         //    аннатация для преобразования  ответа в Jason
+             @Produces(MediaType.APPLICATION_JSON)
+             public PersonRequest checkPerson(){
+                 PersonRequest pr = new PersonRequest();
+                 pr.setSurName("Васильев");
+                 pr.setGivenName("Павел");
+                 pr.setPatronymic("Николаевич");
+                 pr.setDateOfBird(LocalDate.of(1995, 3, 18));
+                 pr.setStreetCode(1);
+                 pr.setBuilding("10");
+                 pr.setExtension("2");
+                 pr.setApartment("121");
+                 return pr;
+             }
+
+В браузере набираем:
+//localhost:8080/city-register-1.0/rest/check
+ И получаем:
+
+         apartment	"121"
+         building	"10"
+         dateOfBird	"1995-03-18"
+         extension	"2"
+         givenName	"Павел"
+         patronymic	"Николаевич"
+         streetCode	1
+         surName	"Васильев"
+
+
+ 5-00 По представлению ДАТ.
+ классы адапторы:
