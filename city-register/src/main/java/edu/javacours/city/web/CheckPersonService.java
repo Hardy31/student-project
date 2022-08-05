@@ -1,13 +1,12 @@
 package edu.javacours.city.web;
 
 
+import edu.javacours.city.domain.PersonResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 @Path("/check")
 public class CheckPersonService {
@@ -25,8 +24,11 @@ public class CheckPersonService {
 
     @GET
     @Path("/{id}")
-    public  String checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
-        return "Simpl QueryParam" + simpleId + " : " + simpleName;
+//    аннатация для преобразования  ответа в Jason
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
+
+        return new PersonResponse();
     }
 }
 

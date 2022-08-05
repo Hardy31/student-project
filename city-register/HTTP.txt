@@ -108,3 +108,46 @@ path параметры
 
 Получаем :
 Результат будет : Simpl QueryParam101 : value
+
+
+начитая с 9 минуты:
+
+немного меняем
+CheckPersonService
+
+    @GET
+    @Path("/{id}")
+    //    аннатация о том что ответ будет преобразовываться в тип  в JSON
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
+
+        return new PersonResponse();
+    }
+и добавляем библиотеки
+в pom.xml
+
+<!--        Библиотека для преобразования обьектов в xml или jason   обратно -  jersey-media-moxy-->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+<!--        для корректной работы библиотеки Библиотека ersey-media-moxy необходима библиотека javax.xml.bind-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+
+        и версию
+
+        <properties>
+                <jaxb.version>2.3.1</jaxb.version>
+            </properties>
+
+
+
+При вводе в браузере :
+http://localhost:8080/city-register-1.0/rest/check/108?name=Dfcbkmtd
+ Получаем:
+ {"registered":false,"temporal":false}
