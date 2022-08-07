@@ -1,3 +1,4 @@
+edu/javacours/city/domain/LocalDateAdapter.class
 edu/javacours/city/exception/PersonCheckException.class
 edu/javacours/city/domain/PersonRequest.class
 edu/javacours/city/web/RequestInfo.class

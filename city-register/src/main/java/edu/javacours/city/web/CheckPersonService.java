@@ -13,22 +13,27 @@ import java.time.LocalDate;
 @Path("/check")
 public class CheckPersonService {
 
-//    private static  final Logger logger = LoggerFactory.getLogger(CheckPersonService.class);
-
-//    public CheckPersonService() {
-//        logger.info("CheckPersonService -  IMPLEMENT!!!!!!!");
-//    }
-
-//    @GET
-//    public  String checkPerson(){
-//        return "Simpl String";
-//    }
+    private static  final Logger logger = LoggerFactory.getLogger(CheckPersonService.class);
 
     @GET
-//    аннатация для преобразования  ответа в Jason
+    @Path("/{id}")
+    //    аннатация о том что ответ будет преобразовываться в тип  в JSON
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse checkPerson(@PathParam("id") int simpleId, @QueryParam("name") String simpleName){
+        return new PersonResponse();
+    }
+    //       localhost:8080/city-register-1.0/rest/check/101?name=value
+    //Результат будет : Simpl QueryParam101 : value
+
+
+
+    
+    @POST
+    //    аннатация для потребления  запроса  в Jason
+    @Consumes(MediaType.APPLICATION_JSON)
+    //    аннатация для преобразования  ответа в Jason
     @Produces(MediaType.APPLICATION_JSON)
     public PersonRequest checkPerson(){
-
         PersonRequest pr = new PersonRequest();
         pr.setSurName("Васильев");
         pr.setGivenName("Павел");
@@ -39,9 +44,11 @@ public class CheckPersonService {
         pr.setExtension("2");
         pr.setApartment("121");
 
+        logger.info("PersonRequest  : " + pr);
         return pr;
     }
 }
 
-//       localhost:8080/city-register-1.0/rest/check/101?name=value
-//Результат будет : Simpl QueryParam101 : value
+        //       отправка запроса через ЗщыеЬфт
+        //      Результа должен быть такой
+        // pictures/Снимок экрана от 2022-08-07 20-27-29.png
