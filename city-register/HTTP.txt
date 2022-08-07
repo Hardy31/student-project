@@ -197,18 +197,18 @@ https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
 //localhost:8080/city-register-1.0/rest/check
 
 {
-  apartment	"121"
-  building	"10"
-  dateOfBird	"18.03.1995"
-  extension	"2"
-  givenName	"Павел"
-  patronymic	"Николаевич"
-  streetCode	1
-  surName	"Васильев"
+    "dateOfBird": "18.03.1995",
+    "apartment": "121",
+    "building": "10",
+    "extension": "2",
+    "givenName": "Павел",
+    "patronymic": "Николаевич",
+    "streetCode": 1,
+    "surName": "Васильев"
 }
 
 Скриншот результата здесь!
-pictures/Снимок экрана от 2022-08-07 20-27-29.png
+pictures/Снимок экрана от Снимок экрана от 2022-08-07 21-58-48.png
 
 
 
@@ -232,4 +232,3 @@ pictures/Снимок экрана от 2022-08-07 20-27-29.png
 
     результат
     pictures/Снимок экрана от 2022-08-07 21-28-34.png
-    
