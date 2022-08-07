@@ -84,6 +84,8 @@ Resourse metod              - Выполняет функционал  мето�
 
 
 
+
+
 Выпуск 104. ReST - входные и выходные параметры.
 https://www.youtube.com/watch?v=53WOKrujc6c&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=104
 
@@ -153,6 +155,10 @@ http://localhost:8080/city-register-1.0/rest/check/108?name=Dfcbkmtd
  {"registered":false,"temporal":false}
 
 
+
+
+
+
 Выпуск 105. ReST - параметры со сложными полями.
 https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=105
 
@@ -192,7 +198,6 @@ https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
  классы адапторы:
 
 
-
 запрос в PostMan
 //localhost:8080/city-register-1.0/rest/check
 
@@ -209,8 +214,6 @@ https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
 
 Скриншот результата здесь!
 pictures/Снимок экрана от Снимок экрана от 2022-08-07 21-58-48.png
-
-
 
 
 Теперь попытаемся сформировать  ответ на любой запрос.
@@ -232,3 +235,39 @@ pictures/Снимок экрана от Снимок экрана от 2022-08-0
 
     результат
     pictures/Снимок экрана от 2022-08-07 21-28-34.png
+
+
+
+
+
+Выпуск 106. ReST - контролируем количество объектов и работаем с базой данных.
+https://www.youtube.com/watch?v=voIRNNIHjAg&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qvZRa&index=106
+
+ Создание и  уничтожение CheckPersonService
+     @PostConstruct
+     public void init(){
+         logger.info("START");
+     }
+
+     @PreDestroy
+     public void destroy(){
+         logger.info("DESTROY");
+     }
+
+
+И автоматическое сожранение war архива в ТОмСат
+В pom.xml
+    добавляем строчкуЖ
+    <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+                        Добавляем вот эту строку, при пререпаковки она сама сбрасывает war в указанную папку
+                        <outputDirectory>/opt/tomcat/webapps</outputDirectory>
+
+                    </configuration>
+                </plugin>
+
+

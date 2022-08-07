@@ -25,6 +25,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>/opt/tomcat/webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

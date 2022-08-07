@@ -6,6 +6,8 @@ import edu.javacours.city.domain.PersonResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
@@ -25,55 +27,15 @@ public class CheckPersonService {
     //       localhost:8080/city-register-1.0/rest/check/101?name=value
     //Результат будет : Simpl QueryParam101 : value
 
+    @PostConstruct
+    public void init(){
+        logger.info("START");
+    }
 
-
-
-//    @POST
-//    //    аннатация для потребления  запроса  в Jason
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    //    аннатация для преобразования  ответа в Jason
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public PersonRequest checkPerson(){
-//        PersonRequest pr = new PersonRequest();
-//        pr.setSurName("Васильев");
-//        pr.setGivenName("Павел");
-//        pr.setPatronymic("Николаевич");
-//        pr.setDateOfBird(LocalDate.of(1995, 3, 18));
-//        pr.setStreetCode(1);
-//        pr.setBuilding("10");
-//        pr.setExtension("2");
-//        pr.setApartment("121");
-//
-//        logger.info("PersonRequest  : " + pr);
-//        return pr;
-//    }
-//    //       отправка запроса через ЗщыеЬфт
-//    //      Результа должен быть такой
-//    // pictures/Снимок экрана от 2022-08-07 20-27-29.png
-
-
-//
-//    @POST
-//    //    аннатация для потребления  запроса  в Jason
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    //    аннатация для преобразования  ответа в Jason
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public PersonResponse checkPerson(){
-//        PersonResponse personResponse = new PersonResponse();
-//        personResponse.setStatus("Respons Сформирован");
-//        personResponse.setTemporal(true);
-//        personResponse.setRegistered(true);
-//
-//        logger.info("personResponse  : " + personResponse);
-//        return personResponse;
-//    }
-//    //       отправка запроса через ЗщыеЬфт
-//    //      Результа должен быть такой
-//    // pictures/Снимок экрана от 2022-08-07 21-28-34.png
-
-
-
-
+    @PreDestroy
+    public void destroy(){
+        logger.info("DESTROY");
+    }
 
     @POST
     //    аннатация для потребления  запроса  в Jason
