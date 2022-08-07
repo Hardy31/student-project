@@ -209,3 +209,27 @@ https://www.youtube.com/watch?v=kCmXwh5fSi0&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
 
 Скриншот результата здесь!
 pictures/Снимок экрана от 2022-08-07 20-27-29.png
+
+
+
+
+Теперь попытаемся сформировать  ответ на любой запрос.
+@POST
+    //    аннатация для потребления  запроса  в Jason
+    @Consumes(MediaType.APPLICATION_JSON)
+    //    аннатация для преобразования  ответа в Jason
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse checkPerson(){
+        PersonResponse personResponse = new PersonResponse();
+        personResponse.setStatus("Respons Сформирован");
+        personResponse.setTemporal(true);
+        personResponse.setRegistered(true);
+
+        logger.info("personResponse  : " + personResponse);
+        return personResponse;
+    }
+
+
+    результат
+    pictures/Снимок экрана от 2022-08-07 21-28-34.png
+    

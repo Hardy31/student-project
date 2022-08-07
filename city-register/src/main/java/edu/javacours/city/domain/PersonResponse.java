@@ -4,6 +4,16 @@ public class PersonResponse {
     private  boolean registered;
     private  boolean temporal;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+
     public boolean isRegistered() {
         return registered;
     }
@@ -25,6 +35,7 @@ public class PersonResponse {
         return "PersonResponse{" +
                 "registered=" + registered +
                 ", temporal=" + temporal +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
