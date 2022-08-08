@@ -271,3 +271,31 @@ https://www.youtube.com/watch?v=voIRNNIHjAg&list=PLyxk-1FCKqockmP-fXZmHQ7UlYP3qv
                 </plugin>
 
 
+Часть 2 урока 16 (10-00)
+будем создовать один PersonCheckDao которорый не будет постоянно закрываться
+а будет работать на протяжении работы програмы.
+
+Перед классом CheckPersonService ставим аннатацию @Singleton (javax.inject)
+и этого достаточно чтобы @PreDestroy уже не срабатывал.
+
+Класс инициализируется один раз и при повторном отправке запроса @PostConstruct уже не срабатывает!
+Вот такая вот интересная фишка.
+
+Теперь присоединение к базе размещаем в init
+            @PostConstruct
+            public void init(){
+                logger.info("DAO Init");
+                dao = new PersonCheckDao();
+        //        dao.setConnectionBuilder(new DirectConnectionBuilder());
+                dao.setConnectionBuilder(new PoolConnectionBuilder());
+            }
+
+            здесь оно через пул коннект!
+
+Дестрой комментируем, так как он уже не сработает!
+
+И  последнее что нужно получить ответ, а так как на выходе из запроса мы получаем
+PersonResponse и преобразовываем его  в JSON
+ТО этого будет достаточно!
+
+

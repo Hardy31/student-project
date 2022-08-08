@@ -1,19 +1,26 @@
 package edu.javacours.city.web;
 
 
+import edu.javacours.city.dao.PersonCheckDao;
+import edu.javacours.city.dao.PoolConnectionBuilder;
 import edu.javacours.city.domain.PersonRequest;
 import edu.javacours.city.domain.PersonResponse;
+import edu.javacours.city.exception.PersonCheckException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
 
 @Path("/check")
+@Singleton
 public class CheckPersonService {
+
+    private PersonCheckDao dao;
 
     private static  final Logger logger = LoggerFactory.getLogger(CheckPersonService.class);
 
@@ -29,30 +36,33 @@ public class CheckPersonService {
 
     @PostConstruct
     public void init(){
-        logger.info("START");
+        logger.info("DAO Init");
+        dao = new PersonCheckDao();
+//        dao.setConnectionBuilder(new DirectConnectionBuilder());
+        dao.setConnectionBuilder(new PoolConnectionBuilder());
     }
 
-    @PreDestroy
-    public void destroy(){
-        logger.info("DESTROY");
-    }
+//    @PreDestroy
+//    public void destroy(){
+//        logger.info("DESTROY");
+//    }
 
     @POST
     //    аннатация для потребления  запроса  в Jason
     @Consumes(MediaType.APPLICATION_JSON)
     //    аннатация для преобразования  ответа в Jason
     @Produces(MediaType.APPLICATION_JSON)
-    public PersonResponse checkPerson(PersonRequest personRequest){
+    public PersonResponse checkPerson(PersonRequest personRequest) throws PersonCheckException {
         logger.info("personRequest  : " + personRequest.toString());
 
 
-        PersonResponse personResponse = new PersonResponse();
-        personResponse.setStatus("Respons Сформирован");
-        personResponse.setTemporal(true);
-        personResponse.setRegistered(true);
+//        PersonResponse personResponse = new PersonResponse();
+//        personResponse.setStatus("Respons Сформирован");
+//        personResponse.setTemporal(true);
+//        personResponse.setRegistered(true);
 
-        logger.info("personResponse  : " + personResponse);
-        return personResponse;
+
+        return dao.checkPerson(personRequest);
     }
     //       отправка запроса через ЗщыеЬфт
     //      Результа должен быть такой
